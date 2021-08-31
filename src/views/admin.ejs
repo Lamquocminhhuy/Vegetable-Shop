@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin Site</title>
+	<link rel="stylesheet" type="text/css"   href="css/admin.css">
+</head>
+<body>
+        
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/">Products</a>
+        </li>
+    
+        
+      </ul>
+    </div>
+  </nav>
+	<div class="container-fluid">
+	
+
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Orders</h5>
+					
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">4</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Delivered</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">3</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Pending</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">0</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="/create_customer/">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Customer</th>
+					<th>Phone</th>
+				</tr>
+				
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="/customers/1/">View</a></td>
+						<td>doge</td>
+						<td>113</td>
+					</tr>
+				
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="/customers/2/">View</a></td>
+						<td>Ronaldo</td>
+						<td>114</td>
+					</tr>
+				
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="/customers/3/">View</a></td>
+						<td>Lam Quoc Minh Huy</td>
+						<td>0896617857</td>
+					</tr>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+	
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				
+				<tr>
+					<td>Hammer</td>
+					<td>July 19, 2021, 6:34 p.m.</td>
+					<td>Out for delivery</td>
+					<td><a class="btn btn-sm btn-info" href="/update_order/4/">Update</td>
+					<td><a class="btn btn-sm btn-danger" href="/delete_order/4/">Delete</td>
+				</tr>
+			
+				<tr>
+					<td>Ball</td>
+					<td>July 20, 2021, 9:50 a.m.</td>
+					<td>Delivered</td>
+					<td><a class="btn btn-sm btn-info" href="/update_order/5/">Update</td>
+					<td><a class="btn btn-sm btn-danger" href="/delete_order/5/">Delete</td>
+				</tr>
+			
+				<tr>
+					<td>Tent</td>
+					<td>July 20, 2021, 10:13 a.m.</td>
+					<td>Delivered</td>
+					<td><a class="btn btn-sm btn-info" href="/update_order/6/">Update</td>
+					<td><a class="btn btn-sm btn-danger" href="/delete_order/6/">Delete</td>
+				</tr>
+			
+				<tr>
+					<td>Tent</td>
+					<td>July 20, 2021, 10:13 a.m.</td>
+					<td>Delivered</td>
+					<td><a class="btn btn-sm btn-info" href="/update_order/7/">Update</td>
+					<td><a class="btn btn-sm btn-danger" href="/delete_order/7/">Delete</td>
+				</tr>
+			
+			</table>
+		</div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>
