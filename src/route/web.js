@@ -5,7 +5,9 @@ import adminController from "../controllers/adminController"
 let router = express.Router();
 
 let initWebRoutes = (app) => {
- 
+    
+    // Định nghĩa tất cả đường link .
+    // Cơ chế: khi người dùng ấn vào 1 đường link thì express sẽ vào file này tìm đường link, nếu giống thì sẽ đi tiếp vào Controller
 
     router.get('/', homeController.getHomePage);
     

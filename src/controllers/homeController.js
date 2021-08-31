@@ -1,5 +1,8 @@
 import db from '../models/index';
 
+
+
+
 let getHomePage = async (req, res) => {
     try {
         let data = await db.Customer.findAll()
@@ -8,9 +11,9 @@ let getHomePage = async (req, res) => {
     }catch(e){
         console.log(e)
     }
-  
-    
 }
+
+
 
 let getAbout = (req, res) => {
     return res.render('test/about.ejs')
