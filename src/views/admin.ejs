@@ -82,32 +82,23 @@
 		<h5>CUSTOMERS:</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="/create_customer/">Create Customer</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="/admin-create-user">Create Customer</a>
 			<table class="table table-sm">
+		
+		
 				<tr>
 					<th></th>
 					<th>Customer</th>
 					<th>Phone</th>
 				</tr>
-				
+				<% for (let i=0; i < data.length; i++) { %>
 					<tr>
 						<td><a class="btn btn-sm btn-info" href="/customers/1/">View</a></td>
-						<td>doge</td>
-						<td>113</td>
+						<td><%= data[i].fullname %></td>
+						<td><%= data[i].phonenumber %></td>
 					</tr>
 				
-					<tr>
-						<td><a class="btn btn-sm btn-info" href="/customers/2/">View</a></td>
-						<td>Ronaldo</td>
-						<td>114</td>
-					</tr>
-				
-					<tr>
-						<td><a class="btn btn-sm btn-info" href="/customers/3/">View</a></td>
-						<td>Lam Quoc Minh Huy</td>
-						<td>0896617857</td>
-					</tr>
-				
+					<% } %>
 			</table>
 		</div>
 	</div>
@@ -127,36 +118,14 @@
 				</tr>
 				
 				<tr>
-					<td>Hammer</td>
-					<td>July 19, 2021, 6:34 p.m.</td>
-					<td>Out for delivery</td>
+					<td></td>
+					<td></td>
+					<td></td>
 					<td><a class="btn btn-sm btn-info" href="/update_order/4/">Update</td>
 					<td><a class="btn btn-sm btn-danger" href="/delete_order/4/">Delete</td>
 				</tr>
 			
-				<tr>
-					<td>Ball</td>
-					<td>July 20, 2021, 9:50 a.m.</td>
-					<td>Delivered</td>
-					<td><a class="btn btn-sm btn-info" href="/update_order/5/">Update</td>
-					<td><a class="btn btn-sm btn-danger" href="/delete_order/5/">Delete</td>
-				</tr>
 			
-				<tr>
-					<td>Tent</td>
-					<td>July 20, 2021, 10:13 a.m.</td>
-					<td>Delivered</td>
-					<td><a class="btn btn-sm btn-info" href="/update_order/6/">Update</td>
-					<td><a class="btn btn-sm btn-danger" href="/delete_order/6/">Delete</td>
-				</tr>
-			
-				<tr>
-					<td>Tent</td>
-					<td>July 20, 2021, 10:13 a.m.</td>
-					<td>Delivered</td>
-					<td><a class="btn btn-sm btn-info" href="/update_order/7/">Update</td>
-					<td><a class="btn btn-sm btn-danger" href="/delete_order/7/">Delete</td>
-				</tr>
 			
 			</table>
 		</div>

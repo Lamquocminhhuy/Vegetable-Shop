@@ -11,7 +11,11 @@ let initWebRoutes = (app) => {
     
     router.get('/about', homeController.getAbout);
 
-    router.get('/admin', adminController.getAdminPage)
+    router.get('/admin', adminController.getAdminPage);
+
+    router.get('/admin-create-user', adminController.getAdminCreateUser);
+
+    router.post('/admin-post-user', adminController.postAdminCreateUser)
 
 
 
