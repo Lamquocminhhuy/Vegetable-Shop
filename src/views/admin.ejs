@@ -70,9 +70,9 @@
 								<th>Customer</th>
 								<th>Phone</th>
 							</tr>
-							<% for (let i=0; i < data.length; i++) { %>
+							<% for (let i=0; i < data.length; i++) {  %>
 								<tr>
-									<td><a class="btn btn-sm btn-info" href="/customers/1/">View</a></td>
+									<td><a class="btn btn-sm btn-info" href="/customer-detail?id=<%= data[i].id %>">View</a></td>
 									<td>
 										<%= data[i].fullname %>
 									</td>
@@ -107,15 +107,36 @@
 								<td><a class="btn btn-sm btn-info" href="/update_order/4/">Update</td>
 								<td><a class="btn btn-sm btn-danger" href="/delete_order/4/">Delete</td>
 							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><a class="btn btn-sm btn-info" href="/update_order/4/">Update</td>
+								<td><a class="btn btn-sm btn-danger" href="/delete_order/4/">Delete</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><a class="btn btn-sm btn-info" href="/update_order/4/">Update</td>
+								<td><a class="btn btn-sm btn-danger" href="/delete_order/4/">Delete</td>
+							</tr>
 
 
 
 						</table>
 					</div>
-				</div>
-				<footer>
-					<%- include('./partials/footer.ejs'); %>
-				</footer>
+					
+		</div>
+
+			<%- include('./partials/footer.ejs'); %>	
+				
+	
+	
+			
+				
+					
+			
 </body>
 
 </html>

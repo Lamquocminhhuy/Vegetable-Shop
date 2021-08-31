@@ -26,11 +26,29 @@ let postAdminCreateUser = async (req, res) => {
     return res.redirect('/admin');
 }
  
+let getCustomerDetail = async(req, res) => {
+    let customerId  = req.query.id;
+    let customer =  await adminServices.getCustomerDetail(customerId );
+    return res.render('customer-detail.ejs', {customer : customer})
+}
+
+let updateCustomerInfor = async(req, res) => {
+    let customer =  await adminServices.updateCustomerInfor(req.body);
+
+    return res.render('customer-detail.ejs', {customer : customer})
+}
 
 
-
+let deleteCustomer = async(req, res) => {
+    let customerId =  await adminServices.deleteCustomer(req.body.id);
+    
+    return res.redirect('/admin');
+}
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
-    postAdminCreateUser:postAdminCreateUser
+    postAdminCreateUser:postAdminCreateUser,
+    getCustomerDetail:getCustomerDetail,
+    updateCustomerInfor:updateCustomerInfor,
+    deleteCustomer:deleteCustomer
 }
