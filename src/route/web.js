@@ -17,7 +17,13 @@ let initWebRoutes = (app) => {
 
     router.get('/admin-create-user', adminController.getAdminCreateUser);
 
-    router.post('/admin-post-user', adminController.postAdminCreateUser)
+    router.post('/admin-post-user', adminController.postAdminCreateUser);
+
+    router.get('/customer-detail', adminController.getCustomerDetail);
+
+    router.post('/update-customer-infor', adminController.updateCustomerInfor);
+
+    router.post('/delete-customer', adminController.deleteCustomer);
 
 
 
