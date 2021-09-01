@@ -13,7 +13,7 @@ let getHomePage = async (req, res) => {
 
 
 let getAbout = (req, res) => {
-    return res.render('test/about')
+    return res.render('login')
 }
 
 

@@ -6,7 +6,7 @@ import adminServices from '../services/adminServices'
 let getAdminPage = async (req, res) => {
     try {
 
-        let data = await db.Customer.findAll()
+        let data = await db.User.findAll()
         return res.render('admin/admin.ejs', {data : data })
 
             
@@ -33,13 +33,13 @@ let postAdminCreateUser = async (req, res) => {
 let getCustomerDetail = async(req, res) => {
     let customerId  = req.query.id;
     let customer =  await adminServices.getCustomerDetail(customerId );
-    return res.render('admin/customer-detail.ejs', {customer : customer})
+    return res.render('admin/customerDetail.ejs', {customer : customer})
 }
 
 let updateCustomerInfor = async(req, res) => {
     let customer =  await adminServices.updateCustomerInfor(req.body);
 
-    return res.render('admin/customer-detail.ejs', {customer : customer})
+    return res.render('admin/customerDetail.ejs', {customer : customer})
 }
 
 
@@ -48,11 +48,25 @@ let deleteCustomer = async(req, res) => {
     
     return res.redirect('/admin');
 }
+
+let handleLogin = async (req,res) =>{
+    let email = req.body.email;
+    let password = req.body.password;
+
+    let message = await adminServices.handleUserLogin(email, password)
+    if(message === true){
+        return res.redirect('/admin');
+    }else{
+        return res.redirect('/login');
+    }
+}
+
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
     postAdminCreateUser:postAdminCreateUser,
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
-    deleteCustomer:deleteCustomer
+    deleteCustomer:deleteCustomer,
+    handleLogin:handleLogin
 }
