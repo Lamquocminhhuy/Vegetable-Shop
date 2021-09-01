@@ -5,7 +5,7 @@ import db from '../models/index';
 
 let getHomePage = async (req, res) => {
    
-        return res.render('homepage.ejs')
+        return res.render('homepage/homepage.ejs')
             
   
 }
@@ -13,7 +13,7 @@ let getHomePage = async (req, res) => {
 
 
 let getAbout = (req, res) => {
-    return res.render('test/about.ejs')
+    return res.render('test/about')
 }
 
 

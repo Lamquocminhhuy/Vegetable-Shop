@@ -6,7 +6,7 @@ import adminServices from '../services/adminServices'
 let getAdminPage = async (req, res) => {
     try {
         let data = await db.Customer.findAll()
-        return res.render('admin.ejs', {data : data })
+        return res.render('admin/admin.ejs', {data : data })
             
     }catch(e){
         console.log(e)
@@ -16,7 +16,7 @@ let getAdminPage = async (req, res) => {
 
 
 let getAdminCreateUser = (req, res) => {
-    return res.render('createUser.ejs')
+    return res.render('admin/createUser.ejs')
 }
 
 
@@ -29,13 +29,13 @@ let postAdminCreateUser = async (req, res) => {
 let getCustomerDetail = async(req, res) => {
     let customerId  = req.query.id;
     let customer =  await adminServices.getCustomerDetail(customerId );
-    return res.render('customer-detail.ejs', {customer : customer})
+    return res.render('admin/customer-detail.ejs', {customer : customer})
 }
 
 let updateCustomerInfor = async(req, res) => {
     let customer =  await adminServices.updateCustomerInfor(req.body);
 
-    return res.render('customer-detail.ejs', {customer : customer})
+    return res.render('admin/customer-detail.ejs', {customer : customer})
 }
 
 
