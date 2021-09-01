@@ -8,8 +8,8 @@ import db from '../models/index';
 let createNewCustomer = (data) => {
     return new Promise(async (resolve, reject) => {
         try{
-            // SEQUELIZE ORM
-            await db.Customer.create({ 
+   
+            await db.Customer.create({
                 email: data.email,
                 password: data.password,
                 fullname: data.fullname,
