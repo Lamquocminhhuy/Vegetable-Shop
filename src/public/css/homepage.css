@@ -1,0 +1,54 @@
+root: {
+  /* Primary color */
+  --clr-green: #7ba164;
+  --clr-darkgreen: #2f5b25;
+  --clr-orange: #E8A62D;
+  --clr-gray: #ECEADA;
+  --clr-darkpurple: #4c3b4b;
+  --clr-brown: #6F5548;
+
+  /* Other setting */
+  --border-radius: 15px;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  --max-width: 1170px;
+}
+
+body {
+
+}
+
+/*border: red 2px solid;*/
+.jumbotron {
+	  background: url(media/jumbotron.jpg);
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-size: cover;
+	  position: absolute;
+	  top:0px;
+	  left:0px;
+	  width: 100%;
+	  height: 80%;
+	  color: whitesmoke;
+}
+
+.jumbo-text {
+	padding: 5rem auto;
+	position: relative;
+	margin-top: 15rem;
+	background: rgb(123, 161, 100,0.5);
+}
+
+.navbar-collapse ul li {
+	margin: 1rem;
+	color: whitesmoke;
+	padding: .4rem .8rem;
+}
+
+.navbar-collapse ul li:hover {
+	color: whitesmoke;
+	background: rgb(123, 161, 100,0.5);
+}
