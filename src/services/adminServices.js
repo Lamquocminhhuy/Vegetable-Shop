@@ -1,17 +1,31 @@
 import db from '../models/index';
 
 
+import bcrypt from 'bcryptjs';
 
+const salt = bcrypt.genSaltSync(10);
 
+let hashUserPassword = (password) => {
 
+    return new Promise(async(resolve, reject) => {
+        try {
+            let hashPassword = await bcrypt.hashSync(password, salt);
+            resolve(hashPassword);
+            console.log(hashPassword)
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
 
 let createNewCustomer = (data) => {
     return new Promise(async (resolve, reject) => {
         try{
             // SEQUELIZE ORM
-            await db.Customer.create({ 
+            let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+            await db.User.create({ 
                 email: data.email,
-                password: data.password,
+                password: hashPasswordFromBcrypt,
                 fullname: data.fullname,
                 address: data.address,
                 phonenumber: data.phonenumber,
@@ -32,7 +46,7 @@ let createNewCustomer = (data) => {
 let getCustomerDetail = (customerId ) => {
     return new Promise(async (resolve, reject) =>{
         try{
-            let user = await db.Customer.findOne({   // Chờ t lấy thông tin hả chạy tiếp dòng khác :v
+            let user = await db.User.findOne({   // Chờ t lấy thông tin hả chạy tiếp dòng khác :v
                 where: { id: customerId }, raw:true
             })
             if(user){
@@ -57,7 +71,7 @@ let updateCustomerInfor = (data) => {
                     message: 'Missing required parameter!'
                 })
             }
-            let user = await db.Customer.findOne({
+            let user = await db.User.findOne({
                 where: { id: data.id },
                 raw: false
             })
@@ -87,7 +101,7 @@ let updateCustomerInfor = (data) => {
 let deleteCustomer = (customerId) =>{
     return new Promise(async (resolve, reject) => {
         try{
-            let user = await db.Customer.findOne({
+            let user = await db.User.findOne({
                where: {id: customerId} 
             })
 
@@ -100,9 +114,64 @@ let deleteCustomer = (customerId) =>{
         }
     })
 }
+
+
+let checkUserEmail = (userEmail) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { email: userEmail }
+            })
+
+            if (user) {
+                resolve(true)
+            } else {
+                resolve(false)
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+
+}
+
+
+let handleUserLogin = (email, password) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+           
+            let isExist = await checkUserEmail(email);
+            if (isExist) {
+                //user already exists
+
+
+                let user = await db.User.findOne({
+                    where: { email: email },
+                    attributes: ['email', 'password'],
+                    raw: true
+                })
+                console.log(user)
+
+                if (user) {
+                    //compare password
+                    let check = await bcrypt.compareSync(password, user.password)
+                    console.log(check)
+                    resolve(check)
+                } 
+            }
+    
+        } catch (e) {
+            reject(e);
+        }
+    })
+
+}
+
+
 module.exports = {
     createNewCustomer : createNewCustomer,
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
-    deleteCustomer:deleteCustomer
+    deleteCustomer:deleteCustomer,
+    handleUserLogin:handleUserLogin
 }

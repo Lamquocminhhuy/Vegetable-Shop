@@ -11,7 +11,7 @@ let initWebRoutes = (app) => {
 
     router.get('/', homeController.getHomePage);
     
-    router.get('/about', homeController.getAbout);
+    router.get('/login', homeController.getLogin);
 
     router.get('/admin', adminController.getAdminPage);
 
@@ -25,8 +25,10 @@ let initWebRoutes = (app) => {
 
     router.post('/delete-customer', adminController.deleteCustomer);
 
+    router.post('/login', adminController.handleLogin);
 
 
+    router.post('/sign-up', homeController.handleSignUp);
 
 
 

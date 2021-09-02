@@ -5,14 +5,14 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<%- include('./partials/head.ejs'); %>
-		<title>Admin Site</title>
-		<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<%- include('../partials/head.ejs'); %>
+	<title>Admin</title>
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
 </head>
 
 <body>
 	<!--  Syntax để include navbar      -->
-	<%- include('./partials/navbar.ejs'); %>
+	<%- include('../partials/navbar.ejs'); %>
 		<div class="container-fluid">
 			<br>
 			<div class="row">
@@ -70,9 +70,10 @@
 								<th>Customer</th>
 								<th>Phone</th>
 							</tr>
-							<% for (let i=0; i < data.length; i++) {  %>
+							<% for (let i=0; i < data.length; i++) { %>
 								<tr>
-									<td><a class="btn btn-sm btn-info" href="/customer-detail?id=<%= data[i].id %>">View</a></td>
+									<td><a class="btn btn-sm btn-info"
+											href="/customer-detail?id=<%= data[i].id %>">View</a></td>
 									<td>
 										<%= data[i].fullname %>
 									</td>
@@ -126,17 +127,17 @@
 
 						</table>
 					</div>
-					
-		</div>
 
-			<%- include('./partials/footer.ejs'); %>	
-				
-	
-	
-			
-				
-					
-			
+				</div>
+
+				<%- include('../partials/footer.ejs'); %>
+
+
+
+
+
+
+
 </body>
 
 </html>
