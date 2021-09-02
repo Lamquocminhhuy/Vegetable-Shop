@@ -71,6 +71,7 @@
 								<th>Phone</th>
 							</tr>
 							<% for (let i=0; i < data.length; i++) { %>
+								<% if (data[i].positionData.value === 'Customer') { %>
 								<tr>
 									<td><a class="btn btn-sm btn-info"
 											href="/customer-detail?id=<%= data[i].id %>">View</a></td>
@@ -81,8 +82,8 @@
 										<%= data[i].phonenumber %>
 									</td>
 								</tr>
-
 								<% } %>
+							<% } %>
 						</table>
 					</div>
 				</div>
@@ -129,8 +130,12 @@
 					</div>
 
 				</div>
-
-				<%- include('../partials/footer.ejs'); %>
+				<footer class="col">
+					<br>
+					<hr>
+					<%- include('../partials/footer.ejs'); %>
+				</footer>
+			
 
 
 

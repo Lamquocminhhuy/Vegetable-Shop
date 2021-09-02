@@ -167,11 +167,88 @@ let handleUserLogin = (email, password) => {
 
 }
 
+let getAllcode = (typeInput) => {
+    return new Promise(async(resolve, reject) => {
 
+        try {
+            if (!typeInput) {
+                resolve({
+               
+                    errMessage: 'Missing required parameters'
+                })
+            } else {
+              
+                let data = await db.Allcode.findAll({ where: { type: typeInput } });
+          
+        
+                resolve(data);
+                // console.log(data)
+
+            }
+
+
+
+        } catch (e) {
+            reject(e)
+        }
+
+    })
+}
+
+let getAllProduct = () => {
+    return new Promise(async(resolve, reject) => {
+
+        try {
+            
+              
+                let data = await db.Product.findAll({
+                    include: [
+                        { model: db.Allcode, as: 'priceData', attributes: ['value'] },
+                        { model: db.Allcode, as: 'statusData', attributes: ['value'] },
+                    ],
+                    raw: true,
+                    nest: true
+                });
+          
+        
+                resolve(data);
+                console.log(data)
+
+          
+        } catch (e) {
+            reject(e)
+        }
+
+    })
+}
+
+let createProduct = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try{
+            await db.Product.create({ 
+                name: data.name,
+                description: data.description,
+                priceId: data.priceId,
+                amount: data.amount,
+                productStatus: data.productStatus,
+            
+               
+            })
+
+            resolve('Ok')
+            
+        }catch(e){
+            reject(e);
+        }
+    });
+}
 module.exports = {
     createNewCustomer : createNewCustomer,
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
     deleteCustomer:deleteCustomer,
-    handleUserLogin:handleUserLogin
+    handleUserLogin:handleUserLogin,
+    getAllcode:getAllcode,
+    createProduct:createProduct,
+    getAllProduct:getAllProduct
 }

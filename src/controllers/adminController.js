@@ -6,7 +6,16 @@ import adminServices from '../services/adminServices'
 let getAdminPage = async (req, res) => {
     try {
 
-        let data = await db.User.findAll()
+        let data = await db.User.findAll(
+            { 
+                include: [
+                    { model: db.Allcode, as: 'positionData', attributes: ['value'] },
+                ],
+                raw: true,
+                nest: true
+            }
+        )
+        console.log(data)
         return res.render('admin/admin.ejs', {data : data })
 
             
@@ -61,6 +70,32 @@ let handleLogin = async (req,res) =>{
     }
 }
 
+
+let getProduct = async (req,res) =>{
+  
+    let price = await adminServices.getAllcode('PRICE');
+    let status = await adminServices.getAllcode('PSTATUS');
+    let product = await adminServices.getAllProduct();
+    // console.log(price)
+    console.log(status)
+    return res.render('admin/product', {
+        price: price,
+        status:status,
+        product:product
+    });
+}
+
+let createProduct = async (req,res) =>{
+
+
+
+    let message = await adminServices.createProduct(req.body)
+    return res.redirect('/product');
+  
+       
+    
+}
+
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
@@ -68,5 +103,8 @@ module.exports = {
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
     deleteCustomer:deleteCustomer,
-    handleLogin:handleLogin
+    handleLogin:handleLogin,
+    getProduct:getProduct,
+    createProduct:createProduct
+
 }

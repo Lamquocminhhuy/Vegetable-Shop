@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs'); %>
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <title>Product</title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs'); %>
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center text-white  mb-3" id="total-orders">
+                        <div class="card-header">
+                            <h5 class="card-title">Total Product</h5>
+
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">4</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center text-white  mb-3" id="orders-delivered">
+                        <div class="card-header">
+                            <h5 class="card-title">Orders Delivered</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">3</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center text-white  mb-3" id="orders-pending">
+                        <div class="card-header">
+                            <h5 class="card-title">Orders Pending</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <button class="btn btn-primary    btn-sm btn-block"  data-bs-toggle="modal" data-bs-target="#productModal">Add Product</button>
+                <%- include('./createproduct.ejs'); %>
+                <br>
+                <h2 class="mt-3 mb-3 text-center">Products List</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th >Amount</th>
+                        <th>Status</th>
+                        <th class="text-center">Details</th>
+                    </tr>
+                    <% for (let i=0; i < product.length; i++) { %>
+                    <tr>
+                   
+                        <td><%= i + 1 %></td>
+                        <td><%= product[i].name %></td>
+                        <td><%= product[i].description %></td>
+                        <td><%= product[i].priceData.value %> $</td>
+                        <td ><%= product[i].amount %></td>
+                        <td><%= product[i].statusData.value%></td>
+                    
+                   
+                        <td class="d-flex justify-content-center">
+                            <!-- <a class="btn btn-sm btn-info" href="/update_order/4/">Update</a> -->
+                        
+                            <a class="btn btn-sm btn-info" href="/delete_order/4/">View</a>
+                            
+                          
+                          
+                        </td>
+              
+                        
+                    </tr>
+                    <% } %>
+                  </table>
+        </div>
+
+</body>
+</html>

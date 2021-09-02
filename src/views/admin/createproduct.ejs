@@ -1,0 +1,62 @@
+
+  <div class="modal" id="productModal" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Product<P></P></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+   
+          <form class="row g-3"  action="/create-product" method="POST">
+            
+            <div class="col-md-12">
+              <label for="inputEmail4" class="form-label">Product Name</label>
+              <input  type="text" class="form-control"   name="name">
+            </div>
+            <div class="col-md-6">
+               
+              <label for="inputPassword4" class="form-label">Price</label>
+       
+              <select id="inputState" class="form-control" name="priceId" >
+                <% for (let i=0; i < price.length; i++) { %>
+                <option value="<%= price[i].keyMap %>"><%= price[i].value %> $</option>
+                <%  } %>
+              </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Status</label>
+                <select id="inputState" class="form-control" name="productStatus" >
+                <% for (let i=0; i < status.length; i++) { %>
+                  <option value="<%= status[i].keyMap %>"><%= status[i].value %> </option>
+
+                 <%  } %>
+                </select>
+              </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Description</label>
+              <input type="text" class="form-control" id="inputAddress" name="description" >
+            </div>
+            <div class="col-6">
+              <label for="inputAddress2" class="form-label">Amount</label>
+              <input type="text" class="form-control" id="inputAddress2" name="amount" >
+            </div>
+            <div class="col-6">
+                <label for="inputAddress2" class="form-label">Image</label>
+                <input type="text" class="form-control" id="inputAddress2" name="image" >
+              </div>
+           
+    
+            <div class="col-12">
+             
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+   
+        </div>    
+      </div>
+    </div>
+  </div>
+  
