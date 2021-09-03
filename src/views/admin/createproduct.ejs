@@ -25,25 +25,25 @@
                 <option value="<%= price[i].keyMap %>"><%= price[i].value %> $</option>
                 <%  } %>
               </select>
-            </div>
-            <div class="col-md-6">
-                <label for="inputCity" class="form-label">Status</label>
-                <select id="inputState" class="form-control" name="productStatus" >
-                <% for (let i=0; i < status.length; i++) { %>
-                  <option value="<%= status[i].keyMap %>"><%= status[i].value %> </option>
-
-                 <%  } %>
-                </select>
-              </div>
-            <div class="col-12">
+            </div> 
+            <div class="col-6">
               <label for="inputAddress" class="form-label">Description</label>
               <input type="text" class="form-control" id="inputAddress" name="description" >
             </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Size</label>
+              <select id="inputState" class="form-control" name="size" >
+              <% for (let i=0; i < size.length; i++) { %>
+                <option value="<%= size[i].keyMap %>"><%= size[i].value %> </option>
+
+               <%  } %>
+              </select>
+          </div>
             <div class="col-6">
               <label for="inputAddress2" class="form-label">Amount</label>
               <input type="text" class="form-control" id="inputAddress2" name="amount" >
             </div>
-            <div class="col-6">
+            <div class="col-12">
                 <label for="inputAddress2" class="form-label">Image</label>
                 <input type="text" class="form-control" id="inputAddress2" name="image" >
               </div>

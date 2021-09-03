@@ -1,6 +1,7 @@
 import db from '../models/index';
 import adminServices from '../services/adminServices'
 
+
 // Controller nhận dữ liệu từ View xong xử lí rồi trả về cho View (khúc xử lí viết bên services vì viết ở đây thì rườm ra lắm)
 
 let getAdminPage = async (req, res) => {
@@ -74,28 +75,60 @@ let handleLogin = async (req,res) =>{
 let getProduct = async (req,res) =>{
   
     let price = await adminServices.getAllcode('PRICE');
-    let status = await adminServices.getAllcode('PSTATUS');
+    let size = await adminServices.getAllcode('SIZE');
     let product = await adminServices.getAllProduct();
     // console.log(price)
-    console.log(status)
-    return res.render('admin/product', {
+   
+    return res.render('admin/product.ejs', {
         price: price,
-        status:status,
-        product:product
+      
+        product:product,
+        size:size,
     });
 }
 
 let createProduct = async (req,res) =>{
-
-
-
     let message = await adminServices.createProduct(req.body)
-    return res.redirect('/product');
-  
-       
-    
+    if(message === 'Ok'){
+        return res.redirect('/product');  
+    }
 }
 
+let getProductDetail = async (req,res) =>{
+    let product = await adminServices.getProductById(req.query.id)
+    let price = await adminServices.getAllcode('PRICE');
+    let size = await adminServices.getAllcode('SIZE');
+    console.log(price)
+    return res.render('admin/productDetail', {
+        product:product,
+        price: price,
+       
+        size:size,
+
+    });
+
+}
+
+let updateProduct = async (req,res) =>{
+    let product = await adminServices.updateProduct(req.body)
+    let price = await adminServices.getAllcode('PRICE');
+    let size = await adminServices.getAllcode('SIZE');
+    return res.render('admin/productDetail' , {
+        product:product,
+        price: price,
+     
+        size:size,
+
+    
+    });
+}
+
+let deleteProduct = async (req,res) =>{
+    let message = await adminServices.deleteProduct(req.body.id)
+    if (message === 'Ok'){
+        return res.redirect('/product')
+    }
+}
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
@@ -105,6 +138,9 @@ module.exports = {
     deleteCustomer:deleteCustomer,
     handleLogin:handleLogin,
     getProduct:getProduct,
-    createProduct:createProduct
+    createProduct:createProduct,
+    getProductDetail:getProductDetail,
+    updateProduct:updateProduct,
+    deleteProduct:deleteProduct
 
 }

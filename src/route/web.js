@@ -30,6 +30,12 @@ let initWebRoutes = (app) => {
 
     router.post('/create-product', adminController.createProduct);
 
+    router.get('/product-detail', adminController.getProductDetail);
+
+    router.post('/update-product', adminController.updateProduct);
+
+    router.post('/delete-product', adminController.deleteProduct);
+
     // Home Page
     router.post('/login', adminController.handleLogin);
 

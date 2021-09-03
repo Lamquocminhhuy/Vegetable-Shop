@@ -21,7 +21,9 @@
 
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">4</h3>
+                            <% if(product)   { %>
+                            <h3 class="card-title"><%= product.length %></h3>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -30,10 +32,21 @@
                 <div class="col-md">
                     <div class="card text-center text-white  mb-3" id="orders-delivered">
                         <div class="card-header">
-                            <h5 class="card-title">Orders Delivered</h5>
+                            <h5 class="card-title">In Stock</h5>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">3</h3>
+                            <% let count = 0 %>
+                            <% for (let i=0; i < product.length; i++) { %>
+                              
+                                <% if(product[i].amount  > 0) { %>
+                                    <% count++ %>
+                                  
+                                <% } %> 
+                               <% if(i == product.length - 1) { %>
+                                <h3 class="card-title"><%= count %></h3>
+                                <% } %>
+
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -43,10 +56,22 @@
                 <div class="col-md">
                     <div class="card text-center text-white  mb-3" id="orders-pending">
                         <div class="card-header">
-                            <h5 class="card-title">Orders Pending</h5>
+                            <h5 class="card-title">Out of stock</h5>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">0</h3>
+                            <% let count1 = 0 %>
+                            <% for (let i=0; i < product.length; i++) { %>
+                              
+                                <% if(product[i].amount === 0) { %>
+                                    <% count1++ %>
+                                  
+                                <% } %> 
+                               <% if(i == product.length - 1) { %>
+                                <h3 class="card-title"><%= count1 %></h3>
+                                <% } %>
+
+                            <% } %>
+                            
                         </div>
                     </div>
                 </div>
@@ -66,24 +91,34 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th >Amount</th>
+                        <th >Size</th>
                         <th>Status</th>
                         <th class="text-center">Details</th>
                     </tr>
                     <% for (let i=0; i < product.length; i++) { %>
+                    
                     <tr>
-                   
+                  
                         <td><%= i + 1 %></td>
                         <td><%= product[i].name %></td>
                         <td><%= product[i].description %></td>
                         <td><%= product[i].priceData.value %> $</td>
                         <td ><%= product[i].amount %></td>
-                        <td><%= product[i].statusData.value%></td>
-                    
+                        <td ><%= product[i].sizeData.value %></td>
+                       
+                        <% if (product[i].amount > 0) { %>
+                            <td>In stock</td>
+                        <% } else { %>
+                            <td>Out of stock</td>
+                        <% } %>
+                        
                    
                         <td class="d-flex justify-content-center">
                             <!-- <a class="btn btn-sm btn-info" href="/update_order/4/">Update</a> -->
-                        
-                            <a class="btn btn-sm btn-info" href="/delete_order/4/">View</a>
+                 
+                            <a class="btn btn-sm btn-info" href="/product-detail?id=<%= product[i].id %>">View</a>
+                           
+                          
                             
                           
                           
@@ -92,6 +127,7 @@
                         
                     </tr>
                     <% } %>
+                  
                   </table>
         </div>
 

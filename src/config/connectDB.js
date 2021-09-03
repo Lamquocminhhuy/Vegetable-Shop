@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('webtcan', 'root', null, {
+const sequelize = new Sequelize('webtcan', 'root', "password", {
   host: 'localhost',
   dialect: 'mysql',
   logging: false
