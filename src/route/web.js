@@ -1,8 +1,12 @@
 import express from "express";
 import homeController from "../controllers/homeController"
 import adminController from "../controllers/adminController"
-
 let router = express.Router();
+const multer = require('multer');
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
+
 
 let initWebRoutes = (app) => {
     
@@ -28,7 +32,7 @@ let initWebRoutes = (app) => {
 
     router.get('/product', adminController.getProduct);
 
-    router.post('/create-product', adminController.createProduct);
+    router.post('/create-product',upload.single('image'), adminController.createProduct);
 
     router.get('/product-detail', adminController.getProductDetail);
 

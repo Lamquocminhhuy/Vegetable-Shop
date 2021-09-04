@@ -27,18 +27,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      productStatus: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       size: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      
+      },    
       image: {
-        allowNull: false,
-        type: Sequelize.STRING
+        allowNull: true,
+        type: Sequelize.TEXT('long')
       },
       createdAt: {
         allowNull: false,

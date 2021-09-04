@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3" method="POST" action="/update-product">
+        <form class="row g-3" method="POST" action="/update-product" enctype="multipart/form">
           <% if(product) { %>
             <input type="hidden" id="custId" name="id" value="<%= product.id %>">
             <div class="col-md-6">
@@ -34,10 +34,6 @@
                 value="<%= product.description %>">
             </div>
 
-            <div class="col-12">
-              <label for="inputAddress2" class="form-label">Image</label>
-              <input type="text" class="form-control" id="inputAddress2" name="image" value="<%= product.image %>">
-            </div>
 
             <div class="col-md-12">
               <label for="inputCity" class="form-label">Size</label>

@@ -188,7 +188,7 @@ let getAllProduct = () => {
   });
 };
 
-let createProduct = (data) => {
+let createProduct = (data, image) => {
   return new Promise(async (resolve, reject) => {
     try {
       await db.Product.findOrCreate({
@@ -200,12 +200,12 @@ let createProduct = (data) => {
           description: data.description,
           priceId: data.priceId,
           amount: data.amount,
-          productStatus: data.productStatus,
           size: data.size,
-          image: data.image,
+          image: image,
+          
         },
+     
       });
-
       resolve("Ok");
     } catch (e) {
       reject(e);
@@ -252,7 +252,6 @@ let updateProduct = (data) => {
           product.priceId = data.priceId,
           product.productStatus = data.productStatus,
           product.amount = data.amount,
-          product.image = data.image,
           product.size = data.size,
           await product.save();
 

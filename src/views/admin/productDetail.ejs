@@ -22,7 +22,7 @@
                     <h5 >Name: <%= product.name %></h5>
 
                     <hr>
-                    <img  style="height: 150px; width: 150px" src="<%= product.image %>"/>
+                    <img  style="height: 150px; width: 150px" src="data:image/png;base64,<%= product.image %>"/>
                     <hr>
                   
                     <button class="btn btn-info  "  data-bs-toggle="modal" data-bs-target="#updateModal">Update Product</button>
