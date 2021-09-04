@@ -28,6 +28,7 @@ let createNewCustomer = (data) => {
         address: data.address,
         phonenumber: data.phonenumber,
         gender: data.gender,
+        positionId: 'P2',
       });
       resolve("Create new customer success");
     } catch (e) {
