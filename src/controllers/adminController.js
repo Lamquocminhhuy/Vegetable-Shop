@@ -15,8 +15,16 @@ let getAdminPage = async (req, res) => {
                 nest: true
             }
         )
-        console.log(data)
-        return res.render('admin/admin.ejs', {data : data })
+        
+
+        let allorder = await adminServices.getAllOrder()
+
+        console.log(allorder)
+        return res.render('admin/admin.ejs', {
+            data : data ,
+            allorder : allorder
+        
+        })
 
             
     }catch(e){
@@ -35,14 +43,23 @@ let getAdminCreateUser = (req, res) => {
 
 let postAdminCreateUser = async (req, res) => {
     let message =  await adminServices.createNewCustomer(req.body);
-    console.log(message)
+  
+
     return res.redirect('/admin');
 }
  
 let getCustomerDetail = async(req, res) => {
     let customerId  = req.query.id;
     let customer =  await adminServices.getCustomerDetail(customerId );
-    return res.render('admin/customerDetail.ejs', {customer : customer})
+    let product = await adminServices.getAllProduct();
+    let order = await adminServices.getOrderByCustomerId(customerId);
+    console.log(order)
+    return res.render('admin/customerDetail.ejs', {
+        customer : customer,
+        product:product,
+        order:order
+    
+    })
 }
 
 let updateCustomerInfor = async(req, res) => {
@@ -100,7 +117,7 @@ let getProductDetail = async (req,res) =>{
     let product = await adminServices.getProductById(req.query.id)
     let price = await adminServices.getAllcode('PRICE');
     let size = await adminServices.getAllcode('SIZE');
-    console.log(price)
+    // console.log(price)
     return res.render('admin/productDetail', {
         product:product,
         price: price,
@@ -131,6 +148,60 @@ let deleteProduct = async (req,res) =>{
         return res.redirect('/product')
     }
 }
+
+let createOrder = async (req,res) =>{
+    let userid = req.body.id;
+    let message = await adminServices.createOrder(req.body)
+    if (message === 'Ok'){
+        return res.redirect('/customer-detail?id='+userid)
+    }
+}
+
+
+// let getOrderDetail = async (req,res) =>{
+//     let product = await adminServices.getProductById(req.query.id)
+//     let price = await adminServices.getAllcode('PRICE');
+//     let size = await adminServices.getAllcode('SIZE');
+//     // console.log(price)
+//     return res.render('admin/productDetail', {
+//         product:product,
+//         price: price,
+//         size:size,
+
+//     });
+
+// }
+let deleteOrder = async (req,res) =>{
+    let message = await adminServices.deleteOrder(req.query.id)
+    if (message === 'Ok'){
+        return res.redirect('/admin')
+    }
+}
+
+let updateOrder = async (req,res) =>{
+
+  let order = await adminServices.getOrderById(req.query.id)
+  let status = await adminServices.getAllcode('STATUS');
+  console.log(status)
+    return res.render('admin/updateOrder' , {
+        order : order,
+        status:status
+
+    
+    });
+}
+
+let updateOrderStatus = async (req,res) =>{
+
+    let message = await adminServices.updateOrderStatus(req.body)
+
+    
+    return res.redirect('/admin')
+   
+      
+  }
+  
+
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
@@ -144,6 +215,11 @@ module.exports = {
     getProductDetail:getProductDetail,
     updateProduct:updateProduct,
     deleteProduct:deleteProduct,
+    createOrder:createOrder,
+    deleteOrder:deleteOrder,
+    updateOrder:updateOrder,
+    updateOrderStatus:updateOrderStatus
+   
     
 
 }

@@ -40,6 +40,16 @@ let initWebRoutes = (app) => {
 
     router.post('/delete-product', adminController.deleteProduct);
 
+    router.post('/create-order-admin', adminController.createOrder);
+
+    router.get('/delete-order', adminController.deleteOrder);
+
+    router.get('/update-order', adminController.updateOrder);
+
+    router.post('/update-order', adminController.updateOrderStatus);
+
+    
+
     // Home Page
     router.post('/login', adminController.handleLogin);
 
