@@ -2,9 +2,12 @@
 
 :root {
   /* Primary color */
-  --clr-green: #9F9F63;
+  --clr-green: #7ba164;
+  --clr-darkgreen: #2f5b25;
   --clr-orange: #E8A62D;
-  --clr-gray: #ECEADA;
+  --clr-gray: #f7f5ea;
+  --clr-darkpurple: #4c3b4b;
+  --clr-brown: #6F5548;
 
   /* Other setting */
   --border-radius: 25px;
@@ -44,8 +47,14 @@ body {
     border-radius: var(--border-radius);
     border: none;
     outline: none;
+    font-weight: bold;
     color: var(--clr-green);
     background: var(--clr-gray);
+}
+
+.btn-login:hover {
+    opacity: .8;
+    transition: var(--transition);
 }
 
 .form-control {

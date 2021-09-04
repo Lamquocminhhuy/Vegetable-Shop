@@ -8,44 +8,45 @@
         </div>
         <div class="modal-body">
 
-
-   
-          <form class="row g-3" action="/sign-up" method="POST">
+          <form action="/sign-up" method="POST">
          
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input  type="email" class="form-control"  name="email">
+            <div class="row mb-3">
+              <label for="inputEmail" class="col-form-label col-sm-4">Email:</label>
+              <div class="col-sm-6">
+                <input  type="email" class="form-control"  name="email">
+              </div>
             </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input  type="password" class="form-control"   name="password">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="inputAddress" name="fullname" >
-            </div>
-            <div class="col-12">
-              <label for="inputAddress2" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress2" name="address" >
-            </div>
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label">Phone Number</label>
-              <input type="text" class="form-control" id="inputAddress2" name="phonenumber" >
-            </div>
-            <div class="col-md-6">
-              <label for="inputState" class="form-label">Gender</label>
-              <select id="inputState" class="form-control" name="gender" >
-                <option selected>Choose</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
 
-              </select>
+            <div class="row mb-3">
+              <label for="inputPassword" class="col-form-label col-sm-4">Password:</label>
+              <div class="col-sm-6">
+                <input  type="password" class="form-control" name="password">
+              </div>
             </div>
-    
-            <div class="col-12">
-             
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+
+            <div class="row mb-3">
+              <label for="inputAddress" class="col-form-label col-sm-4">Full Name:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputName" name="fullname" >
+              </div>
             </div>
+
+            <div class="row mb-3">
+              <label for="inputAddress2" class="col-form-label col-sm-4">Address:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputAddress" name="address" > 
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="inputCity" class="col-form-label col-sm-4">Phone Number:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputPhone" name="phonenumber" >
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary float-end mx-5">Sign Up</button>
+
           </form>
         
         </div>    

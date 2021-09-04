@@ -10,7 +10,7 @@ root: {
   --clr-brown: #6F5548;
 
   /* Other setting */
-  --border-radius: 15px;
+  --border-radius: 10px;
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
@@ -58,18 +58,7 @@ h4 {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
-h1 {
-  font-size: 3rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4 {
-  font-size: 0.875rem;
-}
+
 p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
@@ -99,3 +88,25 @@ p {
 }
 
 /*  global classes */
+
+/* Button */
+
+.btn {
+  background: none;
+  border: none;
+}
+
+.long-btn {
+
+}
+
+.short-btn {
+
+}
+
+.btn:hover {
+    background: none;
+    border: none;
+    opacity: .8;
+    transition: var(--transition);
+}
