@@ -426,7 +426,7 @@ let updateOrderStatus = (data) => {
         raw: false,
       });
 
-      if (order) {
+      if (order ) {
         order.status = data.status,
         
           await order.save();
