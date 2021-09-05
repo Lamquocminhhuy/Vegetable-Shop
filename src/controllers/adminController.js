@@ -76,14 +76,18 @@ let deleteCustomer = async(req, res) => {
 }
 
 let handleLogin = async (req,res) =>{
+
     let email = req.body.email;
     let password = req.body.password;
 
-    let message = await adminServices.handleUserLogin(email, password)
+
+
+    let message = await adminServices.handleUserLogin(email, password);
+    
     if(message === true){
         return res.redirect('/admin');
     }else{
-        return res.redirect('/login');
+        return res.render('homepage/login', {error : 'Please check your email and password!'} );
     }
 }
 

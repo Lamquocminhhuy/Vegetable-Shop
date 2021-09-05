@@ -13,7 +13,7 @@ let getHomePage = async (req, res) => {
 
 
 let getLogin = (req, res) => {
-    return res.render('homepage/login')
+    return res.render('homepage/login', {error : ''})
 }
 
 
