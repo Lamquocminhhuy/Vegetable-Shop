@@ -28,6 +28,7 @@ let createNewCustomer = (data) => {
         address: data.address,
         phonenumber: data.phonenumber,
         gender: data.gender,
+        positionId: 'P2',
       });
       resolve("Create new customer success");
     } catch (e) {
@@ -294,6 +295,156 @@ let deleteProduct = (id) => {
     }
   });
 };
+
+let createOrder = (data) => {
+  return new Promise(async (resolve, reject) => {
+      try{
+         
+  
+          await db.Order.create({ 
+            customerId: data.id,
+            productId: data.productId,
+            quantity: data.quantity,
+            status: 'S1',
+          
+             
+          })
+          let product = await db.Product.findOne({
+            where: { id: data.productId },
+            raw: false,
+          });
+    
+          if (product) {
+         
+              product.amount = product.amount - data.quantity,
+       
+              await product.save();
+    
+  
+          }
+          resolve('Ok')
+          
+
+
+      }catch(e){
+          console.log(e)
+          reject(e);
+      }
+  });
+}
+
+let getOrderByCustomerId = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Order.findOne({
+        where: { customerId: id },
+        include: [
+        
+          { model: db.Allcode, as: "orderStatusData", attributes: ["value"] },
+          { model: db.Product, as: "productData", attributes: ["name"] },
+        ],
+        raw: true,
+        nest: true,
+      });
+      console.log(data);
+      resolve(data);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+
+let getAllOrder = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Order.findAll({
+
+        include: [
+        
+          { model: db.Allcode, as: "orderStatusData", attributes: ["value"] },
+          { model: db.Product, as: "productData", attributes: ["name"] },
+          { model: db.User, as: "customerData", attributes: ["fullname"] },
+        ],
+        raw: true,
+        nest: true,
+      });
+      console.log(data);
+      resolve(data);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let deleteOrder = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let order = await db.Order.findOne({
+        where: { id: id },
+      });
+
+      if (order) {
+        order.destroy();
+      }
+      resolve('Ok');
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getOrderById = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Order.findOne({
+        where: { id: id },
+        include: [
+        
+          { model: db.Allcode, as: "orderStatusData", attributes: ["value"] },
+          { model: db.Product, as: "productData", attributes: ["name"] },
+          { model: db.User, as: "customerData", attributes: ["fullname", "phonenumber", "address"] },
+        ],
+        raw: true,
+        nest: true,
+      });
+      console.log(data);
+      resolve(data);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+
+let updateOrderStatus = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+     
+      let order = await db.Order.findOne({
+        where: { id: data.id },
+        raw: false,
+      });
+
+      if (order) {
+        order.status = data.status,
+        
+          await order.save();
+
+          resolve({
+            message: "Ok!",
+          });
+      } else {
+        resolve({
+          message: "Error!",
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createNewCustomer: createNewCustomer,
   getCustomerDetail: getCustomerDetail,
@@ -305,5 +456,11 @@ module.exports = {
   getAllProduct: getAllProduct,
   getProductById: getProductById,
   updateProduct: updateProduct,
-  deleteProduct:deleteProduct
+  deleteProduct:deleteProduct,
+  createOrder:createOrder,
+  getOrderByCustomerId:getOrderByCustomerId,
+  getAllOrder:getAllOrder,
+  deleteOrder:deleteOrder,
+  getOrderById:getOrderById,
+  updateOrderStatus:updateOrderStatus
 };
