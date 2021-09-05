@@ -8,6 +8,7 @@
   --clr-gray: #ECEADA;
   --clr-darkpurple: #4c3b4b;
   --clr-brown: #6F5548;
+  --clr-bg:  #f4edf4;
 
   /* Other setting */
   --border-radius: 15px;
@@ -52,13 +53,17 @@
 
 .navbar-collapse ul li a {
 	margin: 1rem;
-	color: whitesmoke;
+	color: white;
 	padding: .4rem .8rem;
 }
 
 .navbar-collapse ul li a:hover {
 	color: whitesmoke;
 	background: rgb(123, 161, 100,0.8);
+}
+
+.navbar-collapse .btn {
+	color: white;
 }
 
 .navbar-collapse .btn:hover {
@@ -70,8 +75,7 @@
 /* ================ */
 
 .howitworks {
-	background: url(media/canvas.jpg) repeat;
-	background-size: 1000px;
+	background: var(--clr-bg);
 	text-align: center;
 	padding: 3rem 0 0;
 }
@@ -82,6 +86,7 @@
 
 .howitworks h3 {
 	color: var(--clr-green);
+	padding-top: 1rem;
 }
 
 .howitworks h2,h5 {
@@ -91,4 +96,21 @@
 .howitworks p {
 	font-size: small;
 	color: var(--clr-darkpurple);
+}
+
+/* ================= */
+/* --PICK UP A BOX-- */
+/* ================= */
+
+.pickbox img {
+	width: 250px;
+}
+
+/* ================= */
+/* --SIGN UP MODAL-- */
+/* ================= */
+
+#SignUpModal .btn {
+	background: var(--clr-bg);
+	border: var(--clr-darkpurple) 1px solid;
 }
