@@ -48,6 +48,9 @@ let initWebRoutes = (app) => {
 
     router.post('/update-order', adminController.updateOrderStatus);
 
+    router.get('/delete-order-in-customer', adminController.deleteOrderInCustomer);
+    
+
     
 
     // Home Page

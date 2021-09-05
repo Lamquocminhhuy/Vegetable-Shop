@@ -336,7 +336,7 @@ let createOrder = (data) => {
 let getOrderByCustomerId = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let data = await db.Order.findOne({
+      let data = await db.Order.findAll({
         where: { customerId: id },
         include: [
         
@@ -346,7 +346,7 @@ let getOrderByCustomerId = (id) => {
         raw: true,
         nest: true,
       });
-      console.log(data);
+     
       resolve(data);
     } catch (e) {
       reject(e);

@@ -21,6 +21,7 @@
             <div class="col-6">
                 <div class="card card-body">
                   <% if (order) { %>
+                    <p>Product:    <%= order.productData.name %></p>
                     <p>Quantity:    <%= order.quantity %></p>
                     <p>Customer Name: 	<%= order.customerData.fullname %></p>
                     <p>Phone Number: 	<%= order.customerData.phonenumber %></p>
@@ -44,7 +45,8 @@
                     <p style="color: blue;">Status:    <%= order.orderStatusData.value %></p>
                     <% } %>
                     <form class="row g-3" action="/update-order" method="POST">
-                        <input type="hidden" id="custId" name="id" value="<%= order.id %>">
+                        <input type="hidden"  name="id" value="<%= order.id %>">
+                        <input type="hidden"  name="customerId" value="<%= order.customerId %>">
                         
 
                         <div class="col-md-12">
