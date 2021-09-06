@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('./partials/head.ejs'); %>
+    <%- include('../partials/head.ejs'); %>
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
-    <title>Document</title>
+    <title>Login</title>
 
   
 </head>
@@ -19,7 +19,11 @@
             <div class="col-12 title">
               <h2>Login</h2>
             </div>
-
+          <% if (error) { %>
+            <div style="padding: 0px 25px !important ;" class="alert alert-danger" role="alert">
+              <%= error %>
+            </div>
+          <% } %> 
             <div class="col-12 form-group login-input">
                 <lable class="form-label">Username:</lable>
                 <input 
@@ -37,6 +41,7 @@
                   name="password"
                   placeholder="Enter your password" 
                   class="form-control"
+                  type="password"
                  />
                  <a class="forgot-password" href="#">Forgot your password?</a>
                 </div>

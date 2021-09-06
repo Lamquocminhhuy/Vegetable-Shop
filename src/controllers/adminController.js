@@ -76,14 +76,18 @@ let deleteCustomer = async(req, res) => {
 }
 
 let handleLogin = async (req,res) =>{
+
     let email = req.body.email;
     let password = req.body.password;
 
-    let message = await adminServices.handleUserLogin(email, password)
+
+
+    let message = await adminServices.handleUserLogin(email, password);
+    
     if(message === true){
         return res.redirect('/admin');
     }else{
-        return res.redirect('/login');
+        return res.render('homepage/login', {error : 'Please check your email and password!'} );
     }
 }
 
@@ -194,21 +198,30 @@ let updateOrder = async (req,res) =>{
 let updateOrderStatus = async (req,res) =>{
 
     let message = await adminServices.updateOrderStatus(req.body)
-
-    
-    return res.redirect('/admin')
+    let id = req.body.customerId;
    
-      
-  }
+    return res.redirect('/customer-detail?id='+id )
+    
   
 
+    
+  }
+  
+  let deleteOrderInCustomer = async (req,res) =>{
+    let message = await adminServices.deleteOrder(req.query.id)
+    let cusId = req.query.cusId;
+    
+    if (message === 'Ok'){
+        return res.redirect('/customer-detail?id='+cusId)
+    }
+  }
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
     postAdminCreateUser:postAdminCreateUser,
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
-    deleteCustomer:deleteCustomer,
+    deleteCustomer:deleteCustomer,  
     handleLogin:handleLogin,
     getProduct:getProduct,
     createProduct:createProduct,
@@ -218,7 +231,8 @@ module.exports = {
     createOrder:createOrder,
     deleteOrder:deleteOrder,
     updateOrder:updateOrder,
-    updateOrderStatus:updateOrderStatus
+    updateOrderStatus:updateOrderStatus,
+    deleteOrderInCustomer:deleteOrderInCustomer
    
     
 

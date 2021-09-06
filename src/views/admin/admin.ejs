@@ -24,7 +24,9 @@
 
 							</div>
 							<div class="card-body">
-								<h3 class="card-title">4</h3>
+									<% if(allorder)   { %>
+									<h3 class="card-title"><%= allorder.length %></h3>
+									<% } %>
 							</div>
 						</div>
 					</div>
@@ -36,7 +38,18 @@
 								<h5 class="card-title">New Orders</h5>
 							</div>
 							<div class="card-body">
-								<h3 class="card-title">3</h3>
+								<% let count = 0 %>
+								<% for (let i=0; i < allorder.length; i++) { %>
+								  
+									<% if(allorder[i]. status === 'S1') { %>
+										<% count++ %>
+									  
+									<% } %> 
+								   <% if(i == allorder.length - 1) { %>
+									<h3 class="card-title"><%= count %></h3>
+									<% } %>
+	
+								<% } %>
 							</div>
 						</div>
 					</div>
@@ -49,7 +62,18 @@
 								<h5 class="card-title">Delivered Orders</h5>
 							</div>
 							<div class="card-body">
-								<h3 class="card-title">0</h3>
+								<% let count1 = 0 %>
+								<% for (let i=0; i < allorder.length; i++) { %>
+								  
+									<% if(allorder[i]. status === 'S2') { %>
+										<% count1++ %>
+									  
+									<% } %> 
+								   <% if(i == allorder.length - 1) { %>
+									<h3 class="card-title"><%= count1 %></h3>
+									<% } %>
+	
+								<% } %>
 							</div>
 						</div>
 					</div>
