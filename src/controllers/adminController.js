@@ -215,6 +215,12 @@ let updateOrderStatus = async (req,res) =>{
         return res.redirect('/customer-detail?id='+cusId)
     }
   }
+
+
+  let getSignUp = (req, res) => {
+    return res.render('homepage/register.ejs')
+}
+
 module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
@@ -232,7 +238,8 @@ module.exports = {
     deleteOrder:deleteOrder,
     updateOrder:updateOrder,
     updateOrderStatus:updateOrderStatus,
-    deleteOrderInCustomer:deleteOrderInCustomer
+    deleteOrderInCustomer:deleteOrderInCustomer,
+    getSignUp:getSignUp
    
     
 
