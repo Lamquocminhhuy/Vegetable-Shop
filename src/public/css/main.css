@@ -4,12 +4,12 @@
   /* Primary color */
   --clr-lightgreen: #b6db6b;
   --clr-green: #7ca334;
-  --clr-darkgreen: #6e9624;
+  --clr-darkgreen: #2f5b25;
   --clr-orange: #E8A62D;
   --clr-gray: #ECEADA;
-  --clr-darkcabbage: #67393B;
-  --clr-lightcabbage: #826263;
-  --clr-bg:  #ffface;
+  --clr-dark: #525969;
+  --clr-berry: #5C2622;
+  --clr-brown:  #b78b58;
 
   /* Other setting */
   --border-radius: 10px;

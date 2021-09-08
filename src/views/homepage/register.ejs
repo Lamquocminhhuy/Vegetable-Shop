@@ -6,62 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('../partials/head.ejs'); %>
 
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <title>Register</title>
 
   
 </head>
   <body>
-    <div class="background">
-      <div class="login-container">
+    <div class="container">
+      <div class="register">
         <form action="/sign-up" method="post">
-          <div class="login-content row">
-              <div class="col-12 title">
-                <h2>Register</h2>
-              </div>
+          <div class="content">
+            <div class="title">
+              <h2>Register</h2>
+            </div>
+            
             <% if (error) { %>
               <div style="padding: 0px 25px !important ;" class="alert alert-danger" role="alert">
                 <%= error %>
               </div>
             <% } %> 
        
-          <div class="row mb-3">
-            <label for="inputEmail" class="col-form-label col-sm-4">Email:</label>
-            <div class="col-sm-6">
-              <input  type="email" class="form-control"  name="email">
+            <div class="row mb-3 align-items-center">
+              <label for="inputEmail" class="col-form-label col-sm-4">Email:</label>
+              <div class="col-sm-7">
+                <input  type="email" class="form-control"  name="email">
+              </div>
             </div>
-          </div>
 
-          <div class="row mb-3">
-            <label for="inputPassword" class="col-form-label col-sm-4">Password:</label>
-            <div class="col-sm-6">
-              <input  type="password" class="form-control" name="password">
+            <div class="row mb-3 align-items-center">
+              <label for="inputPassword" class="col-form-label col-sm-4">Password:</label>
+              <div class="col-sm-7">
+                <input  type="password" class="form-control" name="password">
+              </div>
             </div>
-          </div>
 
-          <div class="row mb-3">
-            <label for="inputAddress" class="col-form-label col-sm-4">Full Name:</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputName" name="fullname" >
+            <div class="row mb-3 align-items-center">
+              <label for="inputAddress" class="col-form-label col-sm-4">Full Name:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputName" name="fullname" >
+              </div>
             </div>
-          </div>
 
-          <div class="row mb-3">
-            <label for="inputAddress2" class="col-form-label col-sm-4">Address:</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputAddress" name="address" > 
+            <div class="row mb-3 align-items-center">
+              <label for="inputAddress2" class="col-form-label col-sm-4">Address:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputAddress" name="address" > 
+              </div>
             </div>
-          </div>
 
-          <div class="row mb-3">
-            <label for="inputCity" class="col-form-label col-sm-4">Phone Number:</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputPhone" name="phonenumber" >
+            <div class="row mb-3 align-items-center">
+              <label for="inputCity" class="col-form-label col-sm-4">Phone Number:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputPhone" name="phonenumber" >
+              </div>
             </div>
+
+            <div class="row align-items-center text-center">
+              <button type="submit" class="btn btn-register btn-form col-4">Register</button>
+            </div>
+            
           </div>
-
-          <button type="submit" class="btn float-end mx-5">Sign Up</button>
-
         </form>
       </div>
     </div>

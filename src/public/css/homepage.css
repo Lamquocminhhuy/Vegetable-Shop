@@ -111,44 +111,6 @@
 	font-size: 60px;
 }
 
-/* ================ */
-/* --HOW IT WORKS-- */
-/* ================ */
-
-.howitworks {
-	background: white;
-	text-align: center;
-	padding: 2rem 0;
-}
-
-.howitworks .row {
-	margin-top: 4rem;
-}
-
-.howitworks .img-thumbnail {
-	width: 150px;
-	height: 150px;
-	border: none;
-}
-
-.howitworks img {
-	object-fit: contain;
-}
-
-.howitworks h4 {
-	color: var(--clr-dark);
-	padding: 1rem 3.5rem 0;
-}
-
-.howitworks h2,h5 {
-	color: var(--clr-darkgreen);
-}
-
-.howitworks p {
-	font-size: small;
-	padding: 0 2rem;
-	color: var(--clr-dark);
-}
 
 /* ================= */
 /* --PICK UP A BOX-- */
