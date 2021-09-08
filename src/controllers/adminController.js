@@ -217,9 +217,7 @@ let updateOrderStatus = async (req,res) =>{
   }
 
 
-  let getSignUp = (req, res) => {
-    return res.render('homepage/register.ejs')
-}
+
 
 module.exports = {
     getAdminPage:getAdminPage,
@@ -239,7 +237,7 @@ module.exports = {
     updateOrder:updateOrder,
     updateOrderStatus:updateOrderStatus,
     deleteOrderInCustomer:deleteOrderInCustomer,
-    getSignUp:getSignUp
+    
    
     
 

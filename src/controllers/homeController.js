@@ -4,16 +4,16 @@ import homeServices from '../services/homeServices'
 
 
 let getHomePage = async (req, res) => {
-   
-        return res.render('homepage/homepage.ejs')
-            
-  
+        return res.render('homepage/homepage.ejs') 
+}
+
+let getSignUp = (req, res) => {
+    return res.render('homepage/register.ejs', {error : ''})
 }
 
 
-
 let getLogin = (req, res) => {
-    return res.render('homepage/login', {error : ''})
+    return res.render('homepage/login.ejs', {error : ''})
 }
 
 
@@ -33,6 +33,7 @@ let handleSignUp = async (req, res) => {
 module.exports = {
     getHomePage: getHomePage,
     getLogin:getLogin,
-    handleSignUp:handleSignUp
+    handleSignUp:handleSignUp,
+    getSignUp:getSignUp,
 
 }
