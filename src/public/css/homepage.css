@@ -2,13 +2,14 @@
 
 :root {
   /* Primary color */
-  --clr-green: #7ba164;
+  --clr-lightgreen: #b6db6b;
+  --clr-green: #7ca334;
   --clr-darkgreen: #2f5b25;
   --clr-orange: #E8A62D;
   --clr-gray: #ECEADA;
-  --clr-darkpurple: #4c3b4b;
-  --clr-brown: #6F5548;
-  --clr-bg:  #f4edf4;
+  --clr-dark: #525969;
+  --clr-berry: #5C2622;
+  --clr-brown:  #b78b58;
 
   /* Other setting */
   --border-radius: 15px;
@@ -30,10 +31,65 @@
 	position: absolute;
 	width: 100%;
 	z-index: 10;
+	color: white;
 }
 
+.navbar {
+	padding: 0;
+}
+
+.navbar-brand {
+	font-size: 35px;
+	font-weight: bold;
+	padding: 0 .5rem;
+	border: 1px solid white;
+}
+
+.navbar-collapse {
+	background: rgb(82, 89, 105, 0.8);
+}
+
+.navbar-collapse ul li {
+	margin-top: 1rem;
+}
+
+.navbar-collapse ul li a {
+	margin-right: 1rem;
+	color: white;
+	padding: .4rem .8rem;
+	font-size: medium;
+}
+
+.navbar-collapse ul li a:hover {
+	color: white;
+	background: rgb(106, 150, 31,0.8);
+}
+
+.fa-caret-down {
+	color: white;
+	font-size: 40px;
+	margin: 1rem 0;
+	font-weight: 200;
+}
+
+
+@media(min-width: 1000px ) {
+	.dropdown-btn, .navbar-brand {
+		visibility: hidden;
+		margin-left: -4rem;
+	}
+
+	.navbar-collapse {
+		background: none;
+	}
+}
+
+/* =============== */
+/* -- JUMBOTRON -- */
+/* =============== */
+
 .main {
-	  background: url(media/jumbotron.jpg);
+	  background: url(media/pickled.jpg);
 	  background-repeat: no-repeat;
 	  background-position: center;
 	  background-size: cover;
@@ -41,76 +97,111 @@
 	  padding: 280px 0 220px;
 }
 
-.main .row {
-	padding: 0 4rem;
+.main .container {
+	margin: 6rem 8rem 0;
+	padding: 1rem 2rem;
+	font-size: large;
 	color: white;
-	background: rgb(123, 161, 100,0.5);
+	letter-spacing: .2rem;
+	background: rgb(81, 120, 12, 0.6);
 }
 
-.navbar-collapse {
-	margin: 1rem 2rem;
+.main .container h1 {
+	text-transform: capitalize;
+	font-size: 60px;
 }
 
-.navbar-collapse ul li a {
-	margin: 1rem;
-	color: white;
-	padding: .4rem .8rem;
-}
-
-.navbar-collapse ul li a:hover {
-	color: whitesmoke;
-	background: rgb(123, 161, 100,0.8);
-}
-
-.navbar-collapse .btn {
-	color: white;
-}
-
-.navbar-collapse .btn:hover {
-	color: var(--clr-orange);
-}
-
-/* ================ */
-/* --HOW IT WORKS-- */
-/* ================ */
-
-.howitworks {
-	background: var(--clr-bg);
-	text-align: center;
-	padding: 3rem 0 0;
-}
-
-.howitworks .row {
-	margin-top: 3rem;
-}
-
-.howitworks h3 {
-	color: var(--clr-green);
-	padding-top: 1rem;
-}
-
-.howitworks h2,h5 {
-	color: var(--clr-brown);
-}
-
-.howitworks p {
-	font-size: small;
-	color: var(--clr-darkpurple);
-}
 
 /* ================= */
 /* --PICK UP A BOX-- */
 /* ================= */
 
-.pickbox img {
-	width: 250px;
+.pickbox {
+	margin: 4rem 0;
 }
+
+.pickbox .container {
+	margin: 0 auto;
+	padding: 2rem 0;
+	background: rgb(81, 120, 12, 0.8);
+}
+
+.pickbox .container .row {
+	justify-content: center;
+}
+
+.pickbox .card {
+	background: white;
+	border: none;
+	border-radius: 0;
+}
+
+.pickbox .card-body {
+	color: var(--clr-berry);
+}
+
+.pickbox .card-img-top {
+	width: 90%;
+	padding-top: 1rem;
+}
+
+.pickbox img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.pickbox button {
+	background: var(--clr-brown);
+	color: white;
+	text-transform: capitalize;
+}
+
 
 /* ================= */
 /* --SIGN UP MODAL-- */
 /* ================= */
 
 #SignUpModal .btn {
-	background: var(--clr-bg);
-	border: var(--clr-darkpurple) 1px solid;
+	background: var(--clr-brown);
+	border: var(--clr-dark) 1px solid;
 }
+
+
+/* ================ */
+/* ---- FOOTER ---- */
+/* ================ */
+
+footer {
+	background: url(media/footer-bg.jpg) center no-repeat;
+	background-size: 1800px;
+	height: 60vh;
+}
+
+footer .container {
+	margin: 0 auto;
+	padding-top: 2rem;
+}
+
+footer .textbox {
+	background: white;
+	margin: 4rem auto 2rem;
+	width: 400px;
+	height: 200px;
+	padding: 1rem 0;
+	color: var(--clr-berry);
+}
+
+footer .links {
+	margin: 2rem auto;
+	color: white;
+	font-size: 15px;
+}
+
+footer .links ul li {
+	padding: 0 1rem;
+}
+
+footer .links ul li a:hover {
+	border-bottom: white 1px solid;
+}
+

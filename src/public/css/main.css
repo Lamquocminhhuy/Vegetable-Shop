@@ -2,13 +2,14 @@
 
 :root {
   /* Primary color */
-  --clr-green: #7ba164;
+  --clr-lightgreen: #b6db6b;
+  --clr-green: #7ca334;
   --clr-darkgreen: #2f5b25;
   --clr-orange: #E8A62D;
   --clr-gray: #ECEADA;
-  --clr-darkpurple: #4c3b4b;
-  --clr-brown: #6F5548;
-  --clr-bg:  #f4edf4;
+  --clr-dark: #525969;
+  --clr-berry: #5C2622;
+  --clr-brown:  #b78b58;
 
   /* Other setting */
   --border-radius: 10px;
@@ -54,7 +55,7 @@ h1,
 h2,
 h3,
 h4 {
-  letter-spacing: var(--spacing);
+  /*letter-spacing: var(--spacing);*/
   text-transform: capitalize;
   line-height: 1.25;
   margin-bottom: 0.75rem;
@@ -64,7 +65,7 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
-@media screen and (min-width: 800px) {
+/*@media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
   }
@@ -86,16 +87,11 @@ p {
   h4 {
     line-height: 1;
   }
-}
+}*/
 
 /*  global classes */
 
 /* Button */
-
-.btn {
-  background: none
-  border: none;
-}
 
 .long-btn {
 
@@ -105,14 +101,3 @@ p {
 
 }
 
-.btn:hover {
-    background: none;
-    border: none;
-    opacity: .8;
-    transition: var(--transition);
-}
-
-.btn:focus {
-    outline: none;
-    box-shadow: none;
-}

@@ -2,16 +2,18 @@
 
 :root {
   /* Primary color */
-  --clr-green: #7ba164;
+  --clr-lightgreen: #b6db6b;
+  --clr-green: #7ca334;
   --clr-darkgreen: #2f5b25;
   --clr-orange: #E8A62D;
-  --clr-gray: #f7f5ea;
-  --clr-darkpurple: #4c3b4b;
-  --clr-brown: #6F5548;
+  --clr-gray: #ECEADA;
+  --clr-dark: #525969;
+  --clr-berry: #5C2622;
+  --clr-brown:  #b78b58;
 
   /* Other setting */
   --border-radius: 25px;
-  --transition: all 0.3s linear;
+  --transition: all 0.2s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -20,40 +22,70 @@
 }
 
 body {
-    background: url(media/canvas.jpg);
-    background-size: 500px;
-    font-size: 1rem;
-    color: var(--clr-gray);
+    background-color: var(--clr-darkgreen);
 }
 
-.login-container {
+.container h1 {
+    color: var(--clr-berry);
+}
+
+.login {
     margin: 4rem auto;
     padding: 1rem 2rem;
-    align-items: center;
     width: 25rem;
     height: 30rem;
     border-radius: 10px;
-    background-color: var(--clr-green);
+    background-color: white;
+}
+
+.register {
+    margin: 4rem auto;
+    padding: 1rem 2rem;
+    width: 30rem;
+    height: 35rem;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.content {
+    margin: 1rem auto;
+}
+
+.col-form-label {
+    margin-left: 1.2rem;
 }
 
 .title{
     text-align: center;
-    color: white;
+    color: var(--clr-orange);
 }
 
-.btn-login {
-    margin: 1rem auto .5rem;
-    padding: .8rem 3rem;
+.col-form-label, .col-sm-5 {
+
+}
+
+.btn-form {
     border-radius: var(--border-radius);
     border: none;
     outline: none;
     font-weight: bold;
-    color: var(--clr-green);
-    background: var(--clr-gray);
+    color: white;
+    background: var(--clr-orange);
+
 }
 
-.btn-login:hover {
-    opacity: .8;
+.btn-register {
+    margin: 0 auto;
+    padding: .8rem 0;
+}
+
+.btn-login {
+    margin: 1.5rem auto .5rem;
+    padding: .8rem 3rem;
+}
+
+.btn-form:hover {
+    opacity: .5;
     transition: var(--transition);
 }
 
@@ -62,12 +94,12 @@ body {
 }
 
 .forgot-password {
-    color: var(--clr-gray);
+    color: var(--clr-orange);
 }
 
 .forgot-password:hover {
-    border-bottom: var(--clr-gray) 1px solid;
-    color: var(--clr-gray);
+    border-bottom: var(--clr-orange) 1px solid;
+    color: var(--clr-orange);
 }
 
 .social-login{
@@ -84,7 +116,7 @@ body {
     align-items:center;
     justify-content: center;
     margin: 0 1rem;
-    border: var(--clr-gray) 2px solid;
+    border: var(--clr-orange) 2px solid;
     cursor: pointer;
 }
 

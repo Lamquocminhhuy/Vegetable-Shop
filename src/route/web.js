@@ -59,7 +59,7 @@ let initWebRoutes = (app) => {
     router.post('/sign-up', homeController.handleSignUp);
 
 
-    router.get('/sign-up', adminController.getSignUp);
+    router.get('/sign-up', homeController.getSignUp);
 
 
   

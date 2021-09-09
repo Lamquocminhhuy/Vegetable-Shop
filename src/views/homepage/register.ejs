@@ -4,9 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <%- include('../partials/head.ejs'); %>
+
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <title>Register</title>
+
+  
 </head>
-<body>
-   <h1>Hello</h1>
-</body>
+  <body>
+    <div class="container">
+      <div class="register">
+        <form action="/sign-up" method="post">
+          <div class="content">
+            <div class="title">
+              <h2>Register</h2>
+            </div>
+            
+            <% if (error) { %>
+              <div style="padding: 0px 25px !important ;" class="alert alert-danger" role="alert">
+                <%= error %>
+              </div>
+            <% } %> 
+       
+            <div class="row mb-3 align-items-center">
+              <label for="inputEmail" class="col-form-label col-sm-4">Email:</label>
+              <div class="col-sm-7">
+                <input  type="email" class="form-control"  name="email">
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="inputPassword" class="col-form-label col-sm-4">Password:</label>
+              <div class="col-sm-7">
+                <input  type="password" class="form-control" name="password">
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="inputAddress" class="col-form-label col-sm-4">Full Name:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputName" name="fullname" >
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="inputAddress2" class="col-form-label col-sm-4">Address:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputAddress" name="address" > 
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="inputCity" class="col-form-label col-sm-4">Phone Number:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputPhone" name="phonenumber" >
+              </div>
+            </div>
+
+            <div class="row align-items-center text-center">
+              <button type="submit" class="btn btn-register btn-form col-4">Register</button>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+>>>>>>> 2973d2f0a8b41a3d31842b6642c5ffa093a1f712
 </html>
