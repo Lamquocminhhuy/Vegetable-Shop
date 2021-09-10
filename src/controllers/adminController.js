@@ -83,8 +83,9 @@ let handleLogin = async (req,res) =>{
 
 
     let message = await adminServices.handleUserLogin(email, password);
-    
-    if(message === true){
+    console.log(message);
+    res.cookie('userId', message.user.id)
+    if(message.check === true && message.user.id != 0){
         return res.redirect('/admin');
     }else{
         return res.render('homepage/login', {error : 'Please check your email and password!'} );

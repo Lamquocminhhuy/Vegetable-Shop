@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import viewEngine from './config/viewEngine';
 import initWebRoutes from './route/web';
 import connectDB from './config/connectDB';
+import cookieParser from 'cookie-parser';
 require('dotenv').config();
 
 
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 //     res.send('404 - Not Found');
 // });
 
-
+app.use(cookieParser());
 // config app
 viewEngine(app);
 initWebRoutes(app);

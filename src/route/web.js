@@ -1,6 +1,7 @@
 import express from "express";
 import homeController from "../controllers/homeController"
 import adminController from "../controllers/adminController"
+import authentication from "../auth/authentication"
 let router = express.Router();
 const multer = require('multer');
 const storage = multer.memoryStorage()
@@ -18,7 +19,7 @@ let initWebRoutes = (app) => {
     // Admin
     router.get('/login', homeController.getLogin);
 
-    router.get('/admin', adminController.getAdminPage);
+    router.get('/admin',authentication.handleAuthentication, adminController.getAdminPage);
 
     router.get('/admin-create-user', adminController.getAdminCreateUser);
 
@@ -54,7 +55,7 @@ let initWebRoutes = (app) => {
     
 
     // Home Page
-    router.post('/login', adminController.handleLogin);
+    router.post('/login',authentication.handleAuthentication, adminController.handleLogin);
 
     router.post('/sign-up', homeController.handleSignUp);
 

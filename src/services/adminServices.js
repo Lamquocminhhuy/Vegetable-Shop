@@ -132,7 +132,7 @@ let handleUserLogin = (email, password) => {
 
         let user = await db.User.findOne({
           where: { email: email },
-          attributes: ["email", "password"],
+          attributes: ["id","email", "password"],
           raw: true,
         });
         console.log(user);
@@ -140,8 +140,11 @@ let handleUserLogin = (email, password) => {
         if (user) {
           //compare password
           let check = await bcrypt.compareSync(password, user.password);
-          console.log(check);
-          resolve(check);
+       
+          resolve({
+            check : check,
+            user : user,
+          });
         }
       }
     } catch (e) {
