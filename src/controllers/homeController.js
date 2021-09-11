@@ -1,10 +1,16 @@
 import db from '../models/index';
 import homeServices from '../services/homeServices'
 
-
+import adminServices from '../services/adminServices'
 
 let getHomePage = async (req, res) => {
-        return res.render('homepage/homepage.ejs') 
+        let product = await adminServices.getAllProduct()
+        if(req.signedCookies.userId ){
+            let user = await adminServices.getCustomerDetail(req.signedCookies.userId )
+            return res.render('homepage/homepage.ejs', { product: product , user : user}) 
+        }else{
+            return res.render('homepage/homepage.ejs', { product: product , user : ''}) 
+        }
 }
 
 let getSignUp = (req, res) => {

@@ -11,7 +11,7 @@ let hashUserPassword = (password) => {
         try {
             let hashPassword = await bcrypt.hashSync(password, salt);
             resolve(hashPassword);
-            console.log(hashPassword)
+            // console.log(hashPassword)
         } catch (e) {
             reject(e);
         }

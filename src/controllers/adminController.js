@@ -19,7 +19,7 @@ let getAdminPage = async (req, res) => {
 
         let allorder = await adminServices.getAllOrder()
 
-        console.log(allorder)
+        // console.log(allorder)
         return res.render('admin/admin.ejs', {
             data : data ,
             allorder : allorder
@@ -53,7 +53,7 @@ let getCustomerDetail = async(req, res) => {
     let customer =  await adminServices.getCustomerDetail(customerId );
     let product = await adminServices.getAllProduct();
     let order = await adminServices.getOrderByCustomerId(customerId);
-    console.log(order)
+    // console.log(order)
     return res.render('admin/customerDetail.ejs', {
         customer : customer,
         product:product,
@@ -84,14 +84,22 @@ let handleLogin = async (req,res) =>{
 
     let message = await adminServices.handleUserLogin(email, password);
     console.log(message);
-    res.cookie('userId', message.user.id,{
-        signed: true,
-    })
-    if(message.check === true){
-        return res.redirect('/admin');
-    }else{
-        return res.render('homepage/login', {error : 'Please check your email and password!'} );
+    if(message.user){
+        res.cookie('userId', message.user.id,{
+            signed: true,
+        })
     }
+
+    if(message.check === 'Admin'){
+        return res.redirect('/admin');
+    }else if (message.check === 'User'){
+        return res.redirect('/');
+    }else if (message.errCode === 1){
+        return res.render('homepage/login', {error : message.check} );
+    }
+ 
+   
+    
 }
 
 
@@ -164,20 +172,6 @@ let createOrder = async (req,res) =>{
     }
 }
 
-
-// let getOrderDetail = async (req,res) =>{
-//     let product = await adminServices.getProductById(req.query.id)
-//     let price = await adminServices.getAllcode('PRICE');
-//     let size = await adminServices.getAllcode('SIZE');
-//     // console.log(price)
-//     return res.render('admin/productDetail', {
-//         product:product,
-//         price: price,
-//         size:size,
-
-//     });
-
-// }
 let deleteOrder = async (req,res) =>{
     let message = await adminServices.deleteOrder(req.query.id)
     if (message === 'Ok'){
@@ -189,7 +183,7 @@ let updateOrder = async (req,res) =>{
 
   let order = await adminServices.getOrderById(req.query.id)
   let status = await adminServices.getAllcode('STATUS');
-  console.log(status)
+//   console.log(status)
     return res.render('admin/updateOrder' , {
         order : order,
         status:status

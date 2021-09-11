@@ -18,9 +18,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/customers/">Staffs</a>
             </li> -->
-            <% if (user) { %>
-            <li class="nav-item " style="position: fixed;  margin-left: 1500px; font-weight: 600;">
-              <p class="nav-link">Hello, <%= user.fullname %></p>
+            <% if(user) { %>}
+             <li class="nav-item " style="position: fixed;  margin-left: 1500px; font-weight: 600;">
+              <a class="nav-link" href="/customers-detail?id=<%=user.id%>">Hello, <%= user.fullname %></a>
             </li>
             <% } %>
             <li class="nav-item " style="position: relative;  margin-left: 1500px; margin-top: 5px;">
