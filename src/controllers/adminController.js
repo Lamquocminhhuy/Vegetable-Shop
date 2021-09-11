@@ -64,8 +64,9 @@ let getCustomerDetail = async(req, res) => {
 
 let updateCustomerInfor = async(req, res) => {
     let customer =  await adminServices.updateCustomerInfor(req.body);
-
-    return res.render('admin/customerDetail.ejs', {customer : customer})
+    let product = await adminServices.getAllProduct();
+    let order = await adminServices.getOrderByCustomerId(req.body.id);
+    return res.render('admin/customerDetail.ejs', {customer : customer, product:product, order:order})
 }
 
 
