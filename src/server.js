@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 //     res.send('404 - Not Found');
 // });
 
-app.use(cookieParser());
+app.use(cookieParser("dwedewdver"));
 // config app
 viewEngine(app)
 

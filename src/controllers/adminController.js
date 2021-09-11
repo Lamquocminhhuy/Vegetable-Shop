@@ -84,7 +84,9 @@ let handleLogin = async (req,res) =>{
 
     let message = await adminServices.handleUserLogin(email, password);
     console.log(message);
-    res.cookie('userId', message.user.id)
+    res.cookie('userId', message.user.id,{
+        signed: true,
+    })
     if(message.check === true){
         return res.redirect('/admin');
     }else{
@@ -217,7 +219,12 @@ let updateOrderStatus = async (req,res) =>{
     }
   }
 
-
+  
+  let getLogOut = async (req,res) =>{
+    res.clearCookie('userId');
+    return res.redirect('/')
+    
+  }
 
 
 module.exports = {
@@ -238,6 +245,7 @@ module.exports = {
     updateOrder:updateOrder,
     updateOrderStatus:updateOrderStatus,
     deleteOrderInCustomer:deleteOrderInCustomer,
+    getLogOut:getLogOut
     
    
     

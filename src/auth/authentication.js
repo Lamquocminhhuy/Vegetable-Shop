@@ -1,18 +1,19 @@
 import db from "../models/index";
 
 let handleAuthentication = async (req,res, next) =>{
-    console.log(req.cookies)
-    if(!req.cookies.userId){
+    console.log(req.signedCookies)
+    if(!req.signedCookies.userId){
         res.redirect('/login')
         return;
     }
-    let user = await db.User.findOne( {where: { id: req.cookies.userId }})
+    let user = await db.User.findOne( {where: { id: req.signedCookies.userId }})
 
     if (!user){
         res.redirect('/login');
         return;
     }
     
+   res.locals.user = user;
    next();
  
 }

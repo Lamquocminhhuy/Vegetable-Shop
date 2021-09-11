@@ -2,6 +2,7 @@ import express from "express";
 import homeController from "../controllers/homeController"
 import adminController from "../controllers/adminController"
 import authentication from "../auth/authentication"
+import session from "../middlewares/session"
 let router = express.Router();
 const multer = require('multer');
 const storage = multer.memoryStorage()
@@ -14,7 +15,7 @@ let initWebRoutes = (app) => {
     // Định nghĩa tất cả đường link .
     // Cơ chế: khi người dùng ấn vào 1 đường link thì express sẽ vào file này tìm đường link, nếu giống thì sẽ đi tiếp vào Controller
 
-    router.get('/', homeController.getHomePage);
+    router.get('/',session.signSession ,homeController.getHomePage);
     
     // Admin
     router.get('/login', homeController.getLogin);
@@ -50,6 +51,8 @@ let initWebRoutes = (app) => {
     router.post('/update-order', adminController.updateOrderStatus);
 
     router.get('/delete-order-in-customer', adminController.deleteOrderInCustomer);
+
+    router.get('/log-out', adminController.getLogOut);
     
 
     
