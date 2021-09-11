@@ -35,8 +35,6 @@ let handleSignUp = (data) => {
                
             })
             resolve('Ok')
-            
-
 
         }catch(e){
             console.log(e)
@@ -44,7 +42,6 @@ let handleSignUp = (data) => {
         }
     });
 }
-
 
 
 module.exports = {
