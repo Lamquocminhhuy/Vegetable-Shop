@@ -22,7 +22,7 @@ let initWebRoutes = (app) => {
 
     router.get('/admin',authentication.handleAuthentication, adminController.getAdminPage);
 
-    router.get('/admin-create-user', adminController.getAdminCreateUser);
+    router.get('/admin-create-user', authentication.handleAuthentication, adminController.getAdminCreateUser);
 
     router.post('/admin-post-user', adminController.postAdminCreateUser);
 

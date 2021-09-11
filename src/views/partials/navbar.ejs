@@ -4,13 +4,13 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <ul class="navbar-nav ms-2">
             <li class="nav-item active">
-              <a class="nav-link" href="/admin">Dashboard</a>
+              <a class="nav-link fs-5 fw-bold" href="/admin">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/product">Products</a>
+              <a class="nav-link fs-5 " href="/product">Products</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="/customers/">Customers</a>
@@ -18,16 +18,17 @@
             <li class="nav-item">
               <a class="nav-link" href="/customers/">Staffs</a>
             </li> -->
+          </ul>
+
+          <ul class="navbar-nav fs-6 justify-content-center me-5">
             <% if (user) { %>
-            <li class="nav-item " style="position: fixed;  margin-left: 1500px; font-weight: 600;">
-              <p class="nav-link">Hello, <%= user.fullname %></p>
+            <li class="nav-item">
+              <span class="nav-link ">Hello, <%= user.fullname %></span>
             </li>
             <% } %>
-            <li class="nav-item " style="position: relative;  margin-left: 1500px; margin-top: 5px;">
-              <a class="fas fa-sign-out-alt nav-link "href="/log-out"></a>
+            <li class="nav-item">
+              <a class="fas fa-sign-out-alt nav-link mt-1"href="/log-out"></a>
             </li>
-        
-            
           </ul>
         </div>
       </div>
