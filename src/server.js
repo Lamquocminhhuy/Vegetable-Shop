@@ -22,7 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true}))
 
 app.use(cookieParser());
 // config app
-viewEngine(app);
+viewEngine(app)
+
 initWebRoutes(app);
 
 // connect database

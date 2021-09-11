@@ -55,7 +55,7 @@ let initWebRoutes = (app) => {
     
 
     // Home Page
-    router.post('/login',authentication.handleAuthentication, adminController.handleLogin);
+    router.post('/login', adminController.handleLogin);
 
     router.post('/sign-up', homeController.handleSignUp);
 
