@@ -29,9 +29,9 @@ let initWebRoutes = (app) => {
 
     router.get('/customer-detail',authentication.handleAuthentication, adminController.getCustomerDetail);
 
-    router.post('/update-customer-infor', adminController.updateCustomerInfor);
+    router.post('/update-customer-infor', authentication.handleAuthentication,adminController.updateCustomerInfor);
 
-    router.post('/delete-customer', adminController.deleteCustomer);
+    router.post('/delete-customer', authentication.handleAuthentication,adminController.deleteCustomer);
 
     router.get('/product',authentication.handleAuthentication, adminController.getProduct);
 
@@ -39,19 +39,19 @@ let initWebRoutes = (app) => {
 
     router.get('/product-detail',authentication.handleAuthentication, adminController.getProductDetail);
 
-    router.post('/update-product', adminController.updateProduct);
+    router.post('/update-product', authentication.handleAuthentication,adminController.updateProduct);
 
-    router.post('/delete-product', adminController.deleteProduct);
+    router.post('/delete-product', authentication.handleAuthentication,adminController.deleteProduct);
 
-    router.post('/create-order-admin', adminController.createOrder);
+    router.post('/create-order-admin', authentication.handleAuthentication,adminController.createOrder);
 
-    router.get('/delete-order', adminController.deleteOrder);
+    router.get('/delete-order', authentication.handleAuthentication,adminController.deleteOrder);
 
-    router.get('/update-order', adminController.updateOrder);
+    router.get('/update-order', authentication.handleAuthentication,adminController.updateOrder);
 
-    router.post('/update-order', adminController.updateOrderStatus);
+    router.post('/update-order', authentication.handleAuthentication,adminController.updateOrderStatus);
 
-    router.get('/delete-order-in-customer', adminController.deleteOrderInCustomer);
+    router.get('/delete-order-in-customer', authentication.handleAuthentication,adminController.deleteOrderInCustomer);
 
     router.get('/log-out', adminController.getLogOut);
     
