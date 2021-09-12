@@ -88,6 +88,7 @@ let handleLogin = async (req,res) =>{
     if(message.user){
         res.cookie('userId', message.user.id,{
             signed: true,
+            
         })
     }
 
@@ -96,7 +97,10 @@ let handleLogin = async (req,res) =>{
     }else if (message.check === 'User'){
         return res.redirect('/');
     }else if (message.errCode === 1){
-        return res.render('homepage/login', {error : message.check} );
+        return res.render('homepage/login', {
+            error : message.check,
+            user : message.user,
+        });
     }
  
    

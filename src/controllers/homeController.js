@@ -19,7 +19,7 @@ let getSignUp = (req, res) => {
 
 
 let getLogin = (req, res) => {
-    return res.render('homepage/login.ejs', {error : ''})
+    return res.render('homepage/login.ejs', {error : '', user : ''})
 }
 
 
