@@ -84,7 +84,7 @@ let handleLogin = async (req,res) =>{
 
 
     let message = await adminServices.handleUserLogin(email, password);
-    console.log(message);
+    console.log(message);   
     if(message.user){
         res.cookie('userId', message.user.id,{
             signed: true,

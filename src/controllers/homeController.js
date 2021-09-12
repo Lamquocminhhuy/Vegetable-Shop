@@ -7,6 +7,7 @@ let getHomePage = async (req, res) => {
         let product = await adminServices.getAllProduct()
         if(req.signedCookies.userId ){
             let user = await adminServices.getCustomerDetail(req.signedCookies.userId )
+            console.log(user)
             return res.render('homepage/homepage.ejs', { product: product , user : user}) 
         }else{
             return res.render('homepage/homepage.ejs', { product: product , user : ''}) 
@@ -36,10 +37,41 @@ let handleSignUp = async (req, res) => {
 
 
 
+let getCustomerHomePage = async (req, res) => {
+
+        let customer = await adminServices.getCustomerDetail(req.query.id)
+        let order = await adminServices.getOrderByCustomerId(req.query.id);
+        return res.render('homepage/customerHomePage.ejs', {
+            order:order,
+            customer : customer
+        });
+  
+    
+}
+
+let updateCustomerInfor = async(req, res) => {
+    let customer =  await adminServices.updateCustomerInfor(req.body);
+    let product = await adminServices.getAllProduct();
+    let order = await adminServices.getOrderByCustomerId(req.body.id);
+    return res.render('homepage/customerHomePage.ejs', {customer : customer, product:product, order:order})
+}
+
+let deleteOrderInCustomer = async (req,res) =>{
+    let message = await adminServices.deleteOrder(req.query.id)
+    let cusId = req.query.cusId;
+    
+    if (message === 'Ok'){
+        return res.redirect('/order-detail?id='+cusId)
+    }
+  }
+
 module.exports = {
     getHomePage: getHomePage,
     getLogin:getLogin,
     handleSignUp:handleSignUp,
     getSignUp:getSignUp,
+    getCustomerHomePage:getCustomerHomePage,
+    updateCustomerInfor:updateCustomerInfor,
+    deleteOrderInCustomer:deleteOrderInCustomer
 
 }

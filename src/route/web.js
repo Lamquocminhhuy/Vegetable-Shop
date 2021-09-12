@@ -2,6 +2,7 @@ import express from "express";
 import homeController from "../controllers/homeController"
 import adminController from "../controllers/adminController"
 import authentication from "../auth/authentication"
+import authadmin from "../auth/authadmin"
 let router = express.Router();
 
 //
@@ -21,23 +22,23 @@ let initWebRoutes = (app) => {
     // Admin
     router.get('/login', homeController.getLogin);
 
-    router.get('/admin',authentication.handleAuthentication, adminController.getAdminPage);
+    router.get('/admin',authentication.handleAuthentication, authadmin.authAdmin, adminController.getAdminPage);
 
-    router.get('/admin-create-user',authentication.handleAuthentication, adminController.getAdminCreateUser);
+    router.get('/admin-create-user',authentication.handleAuthentication, authadmin.authAdmin,adminController.getAdminCreateUser);
 
     router.post('/admin-post-user', adminController.postAdminCreateUser);
 
-    router.get('/customer-detail',authentication.handleAuthentication, adminController.getCustomerDetail);
+    router.get('/customer-detail',authentication.handleAuthentication, authadmin.authAdmin,adminController.getCustomerDetail);
 
     router.post('/update-customer-infor', authentication.handleAuthentication,adminController.updateCustomerInfor);
 
     router.post('/delete-customer', authentication.handleAuthentication,adminController.deleteCustomer);
 
-    router.get('/product',authentication.handleAuthentication, adminController.getProduct);
+    router.get('/product',authentication.handleAuthentication, authadmin.authAdmin,adminController.getProduct);
 
     router.post('/create-product',upload.single('image'), adminController.createProduct);
 
-    router.get('/product-detail',authentication.handleAuthentication, adminController.getProductDetail);
+    router.get('/product-detail',authentication.handleAuthentication, authadmin.authAdmin,adminController.getProductDetail);
 
     router.post('/update-product', authentication.handleAuthentication,adminController.updateProduct);
 
@@ -45,9 +46,9 @@ let initWebRoutes = (app) => {
 
     router.post('/create-order-admin', authentication.handleAuthentication,adminController.createOrder);
 
-    router.get('/delete-order', authentication.handleAuthentication,adminController.deleteOrder);
+    router.get('/delete-order', authentication.handleAuthentication,authadmin.authAdmin,adminController.deleteOrder);
 
-    router.get('/update-order', authentication.handleAuthentication,adminController.updateOrder);
+    router.get('/update-order', authentication.handleAuthentication,authadmin.authAdmin,adminController.updateOrder);
 
     router.post('/update-order', authentication.handleAuthentication,adminController.updateOrderStatus);
 
@@ -63,10 +64,13 @@ let initWebRoutes = (app) => {
 
     router.post('/sign-up', homeController.handleSignUp);
 
-
     router.get('/sign-up', homeController.getSignUp);
 
+    router.get('/order-detail', authentication.handleAuthentication, homeController.getCustomerHomePage);
 
+    router.post('/update-customer-infor-home', authentication.handleAuthentication,homeController.updateCustomerInfor);
+
+    router.get('/delete-order-in-customer-home', authentication.handleAuthentication,homeController.deleteOrderInCustomer);
   
 
 
