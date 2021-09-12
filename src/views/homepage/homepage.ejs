@@ -40,7 +40,7 @@
           <div class="card-body">
             <h4 class="card-title"><%= product[i].name %></h4>
             <p class="card-text"><%= product[i].description %></p>
-            <button class="btn">Bring me this box</button>
+            <a class="btn" href="/products?id=<%= product[i].id %>">Bring me this box</a>
           </div>
         </div>
         <% } %>

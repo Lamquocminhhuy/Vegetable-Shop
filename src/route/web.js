@@ -71,6 +71,10 @@ let initWebRoutes = (app) => {
     router.post('/update-customer-infor-home', authentication.handleAuthentication,homeController.updateCustomerInfor);
 
     router.get('/delete-order-in-customer-home', authentication.handleAuthentication,homeController.deleteOrderInCustomer);
+
+    router.get('/products', authentication.handleAuthentication, homeController.getProduct);
+
+    router.post('/buy-product', homeController.createOrder);
   
 
 

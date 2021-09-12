@@ -9,13 +9,13 @@
   
           <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item"><a href="#">Home</a></li>
+              <li class="nav-item"><a href="/">Home</a></li>
               <li class="nav-item"><a href="#">About Us</a></li>
               <li class="nav-item"><a href="#">Contact</a></li>
               <li class="nav-item"><a href="#">Recipes</a></li>
             </ul>
        
-          <% if(user) { %>}
+          <% if(user) { %>
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a href="/order-detail?id=<%=user.id%>">Hello, <%= user.fullname %></a>
