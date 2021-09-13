@@ -88,6 +88,7 @@ let handleLogin = async (req,res) =>{
     if(message.user){
         res.cookie('userId', message.user.id,{
             signed: true,
+            expires: new Date(Date.now() + 900000)
             
         })
     }
