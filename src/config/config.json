@@ -1,12 +1,19 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "webtcan",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "logging": false
-
+    "username": "okultaptlbfcuv",
+    "password": "7b6487c14595de4378b22bc964b8151be8e88c844670381b6558c206f3a9032a",
+    "database": "d2uivc17a0acdt",
+    "host": "ec2-44-198-223-154.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "logging": false,
+    "timezone": "+07:00",
+  
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
     "username": "root",
