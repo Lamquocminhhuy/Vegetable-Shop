@@ -9,7 +9,7 @@ let hashUserPassword = (password) => {
     try {
       let hashPassword = await bcrypt.hashSync(password, salt);
       resolve(hashPassword);
-      console.log(hashPassword);
+      // console.log(hashPassword);
     } catch (e) {
       reject(e);
     }
@@ -132,20 +132,47 @@ let handleUserLogin = (email, password) => {
 
         let user = await db.User.findOne({
           where: { email: email },
-          attributes: ["id","email", "password"],
+          attributes: ["id","email", "password", "positionId"],
           raw: true,
         });
-        console.log(user);
 
-        if (user) {
+        if (user && user.positionId === 'P1') {
           //compare password
           let check = await bcrypt.compareSync(password, user.password);
-       
+          if(check === true){
+            resolve({
+              check : 'Admin',
+              user : user,
+            });
+          }else{
+            resolve({
+              check : 'Wrong password !',
+              user : user.email,
+              errCode : 1
+            });
+          }
+         
+        }else if(user && user.positionId === 'P2'){
+          let check = await bcrypt.compareSync(password, user.password);
+          if(check === true){
+          
           resolve({
-            check : check,
+            check : 'User',
             user : user,
           });
+         }else{
+          resolve({
+            check : 'Wrong password !',
+            user : user.email,
+            errCode : 1
+          });
+          }
         }
+      }else{
+        resolve({
+          check : 'Your email is not exist !',
+          errCode : 1
+        });
       }
     } catch (e) {
       reject(e);
@@ -185,7 +212,7 @@ let getAllProduct = () => {
       });
 
       resolve(data);
-      console.log(data);
+      // console.log(data);
     } catch (e) {
       reject(e);
     }
@@ -229,7 +256,7 @@ let getProductById = (id) => {
         raw: true,
         nest: true,
       });
-      console.log(data);
+      // console.log(data);
       resolve(data);
     } catch (e) {
       reject(e);
@@ -372,7 +399,7 @@ let getAllOrder = () => {
         raw: true,
         nest: true,
       });
-      console.log(data);
+      // console.log(data);
       resolve(data);
     } catch (e) {
       reject(e);
@@ -411,7 +438,7 @@ let getOrderById = (id) => {
         raw: true,
         nest: true,
       });
-      console.log(data);
+      // console.log(data);
       resolve(data);
     } catch (e) {
       reject(e);

@@ -18,12 +18,18 @@
             <li class="nav-item">
               <a class="nav-link" href="/customers/">Staffs</a>
             </li> -->
+<<<<<<< HEAD
           </ul>
 
           <ul class="navbar-nav fs-6 justify-content-center me-5">
             <% if (user) { %>
             <li class="nav-item">
               <span class="nav-link ">Hello, <%= user.fullname %></span>
+=======
+            <% if(user) { %>
+             <li class="nav-item " style="position: fixed;  margin-left: 1500px; font-weight: 600;">
+              <a class="nav-link" href="/customers-detail?id=<%=user.id%>">Hello, <%= user.fullname %></a>
+>>>>>>> main
             </li>
             <% } %>
             <li class="nav-item">

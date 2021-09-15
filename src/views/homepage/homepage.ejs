@@ -33,6 +33,7 @@
   <section class="pickbox">
     <div class="container">
       <div class="row text-center">
+<<<<<<< HEAD
 
         <% if(products) { %>
           <h1 class="text-white">Our Products</h1>
@@ -50,6 +51,20 @@
           <% }  %>
         <% } %>
 
+=======
+
+        <% for (let i=0; i < product.length; i++) { %>
+        <div class="col-md-3 mx-3 my-3 col-sm-6 px-2 py-2  card">
+          <img src="data:image/png;base64,<%= product[i].image %>" class="card-img-top rounded mx-auto d-block">
+          <div class="card-body">
+            <h4 class="card-title"><%= product[i].name %></h4>
+            <p class="card-text"><%= product[i].description %></p>
+            <a class="btn" href="/products?id=<%= product[i].id %>">Bring me this box</a>
+          </div>
+        </div>
+        <% } %>
+   
+>>>>>>> main
       </div>
     </div>
   </section>
