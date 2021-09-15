@@ -2,18 +2,19 @@ import db from '../models/index';
 import homeServices from '../services/homeServices'
 import adminServices from '../services/adminServices'
 
-
+import adminServices from '../services/adminServices'
 
 let getHomePage = async (req, res) => {
-    try {
-        const products = await adminServices.getAllProduct(req.body)
 
-        return res.render('homepage/homepage.ejs',{products:products})
-    }
-         
-    catch (err) {
-        console.log(err.message);
-     }
+        let product = await adminServices.getAllProduct()
+        if(req.signedCookies.userId ){
+            let user = await adminServices.getCustomerDetail(req.signedCookies.userId )
+            return res.render('homepage/homepage.ejs', { product: product , user : user}) 
+        }
+        else{
+            return res.render('homepage/homepage.ejs', { product: product , user : ''}) 
+        }
+
 }
 
 let getSignUp = (req, res) => {

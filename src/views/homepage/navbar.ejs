@@ -14,17 +14,29 @@
               <li class="nav-item"><a href="#">Contact</a></li>
               <li class="nav-item"><a href="#">Recipes</a></li>
             </ul>
-            
+       
+          <% if(user) { %>}
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a href="/login">Sign In</a>
+                <a href="#">Hello, <%= user.fullname %></a>
               </li>
   
               <li class="nav-item">
-                <a href="/sign-up">Sign Up</a>
+                <a href="/log-out">Sign Out</a>
               </li>
             </ul> 
-          
+          <% } else { %>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="/login">Sign In</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/sign-up">Sign Up</a>
+            </li>
+          </ul> 
+          <% } %>
+
           </div>
         </div>
       </nav>

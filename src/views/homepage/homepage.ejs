@@ -34,16 +34,16 @@
     <div class="container">
       <div class="row text-center">
 
-        <% if(products) { %>
+        <% if(product) { %>
           <h1 class="text-white">Our Products</h1>
 
-          <% for (let i=0; i < products.length; i++) { %>
+          <% for (let i=0; i < product.length; i++) { %>
 
           <div class="col-md-3 mx-3 my-3 col-sm-6 px-2 py-2 d-flex card">
-            <img src="data:image/png;base64,<%= products[i].image %>" class="card-img-top rounded mx-auto d-block">
+            <img src="data:image/png;base64,<%= product[i].image %>" class="card-img-top rounded mx-auto d-block">
             <div class="card-body flex-column">
-              <h4 class="card-title"><%=products[i].name%></h4>
-              <p class="card-text"><%=products[i].descripton%></p>
+              <h4 class="card-title"><%=product[i].name%></h4>
+              <p class="card-text"><%=product[i].descripton%></p>
               <button class="btn mt-auto">Bring me this box</button>
             </div>
           </div>
