@@ -135,26 +135,42 @@ let handleUserLogin = (email, password) => {
           attributes: ["id","email", "password", "positionId"],
           raw: true,
         });
-       
-    
+
         if (user && user.positionId === 'P1') {
           //compare password
           let check = await bcrypt.compareSync(password, user.password);
-          
-          resolve({
-            check : 'Admin',
-            user : user,
-          });
+          if(check === true){
+            resolve({
+              check : 'Admin',
+              user : user,
+            });
+          }else{
+            resolve({
+              check : 'Wrong password !',
+              user : user.email,
+              errCode : 1
+            });
+          }
+         
         }else if(user && user.positionId === 'P2'){
           let check = await bcrypt.compareSync(password, user.password);
+          if(check === true){
+          
           resolve({
             check : 'User',
             user : user,
           });
+         }else{
+          resolve({
+            check : 'Wrong password !',
+            user : user.email,
+            errCode : 1
+          });
+          }
         }
       }else{
         resolve({
-          check : 'Your email is not existed',
+          check : 'Your email is not exist !',
           errCode : 1
         });
       }

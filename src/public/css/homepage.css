@@ -150,7 +150,7 @@
 	object-fit: cover;
 }
 
-.pickbox button {
+.pickbox a {
 	background: var(--clr-brown);
 	color: white;
 	text-transform: capitalize;

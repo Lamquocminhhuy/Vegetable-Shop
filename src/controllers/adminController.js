@@ -64,8 +64,9 @@ let getCustomerDetail = async(req, res) => {
 
 let updateCustomerInfor = async(req, res) => {
     let customer =  await adminServices.updateCustomerInfor(req.body);
-
-    return res.render('admin/customerDetail.ejs', {customer : customer})
+    let product = await adminServices.getAllProduct();
+    let order = await adminServices.getOrderByCustomerId(req.body.id);
+    return res.render('admin/customerDetail.ejs', {customer : customer, product:product, order:order})
 }
 
 
@@ -83,10 +84,12 @@ let handleLogin = async (req,res) =>{
 
 
     let message = await adminServices.handleUserLogin(email, password);
-    console.log(message);
+    console.log(message);   
     if(message.user){
         res.cookie('userId', message.user.id,{
             signed: true,
+            expires: new Date(Date.now() + 900000)
+            
         })
     }
 
@@ -95,7 +98,10 @@ let handleLogin = async (req,res) =>{
     }else if (message.check === 'User'){
         return res.redirect('/');
     }else if (message.errCode === 1){
-        return res.render('homepage/login', {error : message.check} );
+        return res.render('homepage/login', {
+            error : message.check,
+            user : message.user,
+        });
     }
  
    

@@ -1,9 +1,12 @@
 const { Sequelize } = require('sequelize');
 
+
 const sequelize = new Sequelize('webtcan', 'root', null, {
   host: 'localhost',
   dialect: 'mysql',
   logging: false
+
+
 });
 
 let connectDB = async () => {
