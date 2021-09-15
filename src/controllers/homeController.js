@@ -31,7 +31,7 @@ let handleSignUp = async (req, res) => {
   if (message === "Ok") {
     return res.redirect("/login");
   } else {
-    return res.send("Create account failed");
+    return res.render("homepage/register.ejs", { error: "This email has existed ! Please choose another" });;
   }
 };
 

@@ -17,11 +17,28 @@ let hashUserPassword = (password) => {
         }
     })
 }
-
+let checkUserEmail = (userEmail) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let user = await db.User.findOne({
+          where: { email: userEmail },
+        });
+  
+        if (user) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      } catch (e) {
+        reject(e);
+      }
+    });
+  };
 let handleSignUp = (data) => {
     return new Promise(async (resolve, reject) => {
         try{
-           
+            let isExist = await checkUserEmail(data.email);
+            if (!isExist) {
             let hashPasswordFromBcrypt = await hashUserPassword(data.password);
             await db.User.create({ 
                 email: data.email,
@@ -35,7 +52,9 @@ let handleSignUp = (data) => {
                
             })
             resolve('Ok')
-            
+        }else{
+            resolve('No') 
+        }
 
 
         }catch(e){
