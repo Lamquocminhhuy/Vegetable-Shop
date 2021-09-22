@@ -51,11 +51,12 @@ let handleSignUp = (data) => {
                 });
                 resolve('Ok')
             }
-            catch(e) {
-                console.log(e)
-                reject(e);
-            }
         }
+        catch(e) {
+            console.log(e)
+            reject(e);
+        }
+        
     })
 }
 
