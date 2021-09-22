@@ -3,21 +3,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add Product<P></P></h4>
+          <h5 class="modal-title">Add Product</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
-
    
-          <form class="row g-3"  action="/create-product" method="POST" enctype="multipart/form-data"> 
+          <form class="row g-3 px-2"  action="/create-product" method="POST" enctype="multipart/form-data"> 
             
-            <div class="col-md-12">
+            <div class="col-12">
               <label for="inputEmail4" class="form-label">Product Name</label>
               <input  type="text" class="form-control"   name="name" required>
             </div>
-            <div class="col-md-6">
-               
+
+            <div class="col-12">
               <label for="inputPassword4" class="form-label">Price</label>
        
               <select id="inputState" class="form-control" name="priceId" required>
@@ -26,32 +24,33 @@
                 <%  } %>
               </select>
             </div> 
+
             <div class="col-6">
-              <label for="inputAddress" class="form-label">Description</label>
-              <input type="text" class="form-control" id="inputAddress" name="description" required>
-            </div>
-            <div class="col-md-6">
               <label for="inputCity" class="form-label">Size</label>
               <select id="inputState" class="form-control" name="size" required>
               <% for (let i=0; i < size.length; i++) { %>
                 <option value="<%= size[i].keyMap %>"><%= size[i].value %> </option>
-
                <%  } %>
               </select>
-          </div>
+            </div>
+
             <div class="col-6">
               <label for="inputAddress2" class="form-label">Amount</label>
               <input type="text" class="form-control" id="inputAddress2" name="amount" required>
             </div>
+
             <div class="col-12">
-                <label for="inputAddress2" class="form-label">Image</label>
-                <input type="file" class="form-control" id="inputAddress2" name="image" required>
-              </div>
-           
+              <label for="inputAddress2" class="form-label">Image</label>
+              <input type="file" class="form-control" id="inputAddress2" name="image" required>
+            </div>
+
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Description</label>
+              <textarea type="text" class="form-control" id="inputAddress" name="description" required></textarea>
+            </div>
     
             <div class="col-12">
-             
-            <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </form>
    
