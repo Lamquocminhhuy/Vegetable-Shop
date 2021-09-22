@@ -17,34 +17,49 @@ let hashUserPassword = (password) => {
         }
     })
 }
-
+let checkUserEmail = (userEmail) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let user = await db.User.findOne({
+          where: { email: userEmail },
+        });
+  
+        if (user) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      } catch (e) {
+        reject(e);
+      }
+    });
+  };
 let handleSignUp = (data) => {
     return new Promise(async (resolve, reject) => {
-        try{
-           
-            let hashPasswordFromBcrypt = await hashUserPassword(data.password);
-            await db.User.create({ 
-                email: data.email,
-                password: hashPasswordFromBcrypt,
-                fullname: data.fullname,
-                address: data.address,
-                phonenumber: data.phonenumber,
-                gender: data.gender,
-                positionId : 'P2'
-            
-               
-            })
-            resolve('Ok')
-
-        }catch(e){
-            console.log(e)
-            reject(e);
+        try {
+            let isExist = await checkUserEmail(data.email);
+            if (!isExist) {
+                let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+                await db.User.create({ 
+                    email: data.email,
+                    password: hashPasswordFromBcrypt,
+                    fullname: data.fullname,
+                    address: data.address,
+                    phonenumber: data.phonenumber,
+                    gender: data.gender,
+                    positionId : 'P2'
+                });
+                resolve('Ok')
+            }
+            catch(e) {
+                console.log(e)
+                reject(e);
+            }
         }
-    });
+    })
 }
 
 
 module.exports = {
     handleSignUp : handleSignUp,
- 
 }
