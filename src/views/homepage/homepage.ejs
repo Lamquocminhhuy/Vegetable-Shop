@@ -32,22 +32,23 @@
   <!-- PICK UP A BOX -->
   <section class="pickbox">
     <div class="container">
+      <h1 class="text-white text-center">Our Products</h1>
       <div class="row text-center">
 
         <% if(product) { %>
 
-          <h1 class="text-white">Our Products</h1>
-
           <% for (let i=0; i < product.length; i++) { %>
+        <div class="col-md-3 mx-3 my-3 col-sm-6">
+          <div class="card h-100">
+              <img class="card-img-top" src="data:image/png;base64,<%= product[i].image %>">
+              <div class="card-body d-flex flex-column">
+                <h4 class="card-title"><%=product[i].name%></h4>
+                <p class="card-text"><%=product[i].description%></p>
+                <button class="btn mt-auto">Bring me this box</button>
+              </div>
 
-          <div class="col-md-3 mx-3 my-3 col-sm-6 px-2 py-2 d-flex card">
-            <img src="data:image/png;base64,<%= product[i].image %>" class="card-img-top rounded mx-auto d-block">
-            <div class="card-body flex-column">
-              <h4 class="card-title"><%=product[i].name%></h4>
-              <p class="card-text"><%=product[i].descripton%></p>
-              <button class="btn mt-auto">Bring me this box</button>
-            </div>
           </div>
+        </div>
           <% }  %>
         <% } %>
 
