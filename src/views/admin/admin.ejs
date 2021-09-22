@@ -13,15 +13,14 @@
 <body>
 	<!--  Syntax để include navbar      -->
 	<%- include('../partials/navbar.ejs'); %>
-		<div class="container-fluid">
+		<div class="container">
 			<br>
-			<div class="row">
-				<div class="col">
-					<div class="col-md">
+			<div class="row justify-content-between">
+
+					<div class="col-md-4 ">
 						<div class="card text-center text-white  mb-3" id="total-orders">
 							<div class="card-header">
 								<h5 class="card-title">Total Orders</h5>
-
 							</div>
 							<div class="card-body">
 									<% if(allorder)   { %>
@@ -30,9 +29,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col">
-					<div class="col-md">
+
+					<div class="col-md-4">
 						<div class="card text-center text-white  mb-3" id="orders-delivered">
 							<div class="card-header">
 								<h5 class="card-title">New Orders</h5>
@@ -53,10 +51,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col">
-					<div class="col-md">
+					<div class="col-md-4">
 						<div class="card text-center text-white  mb-3" id="orders-pending">
 							<div class="card-header">
 								<h5 class="card-title">Delivered Orders</h5>
@@ -77,77 +73,114 @@
 							</div>
 						</div>
 					</div>
-				</div>
+
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-md-5">
-					<h5 class="text-center">CUSTOMERS:</h5>
-					<hr>
-					<div class="card card-body">
-						
-						<table class="table table-sm">
+				<div class="col-lg-5 mb-5">
+					<div class="card">
 
+						<div class="card-header">
+							<ul class="ps-0">
+								<li class="float-start">
+									<h4 class="mb-0">Customers</h4>
+								</li>
+								<li class="float-end">
+									<form class="d-flex ">
+					        	<input class="form-control me-2 py-1" type="search" placeholder="Search" aria-label="Search">
+					        <button class="btn btn-sm btn-secondary" type="submit">Search</button>
+					      </form>
+								</li>
+							</ul>
+						</div>
 
-							<tr>
-								<th>Customer</th>
-								<th>Phone</th>
-								<th></th>
-								<a class="btn btn-primary  btn-sm btn-block" href="/admin-create-user">Create Customer</a>
-							</tr>
-							<% for (let i=0; i < data.length; i++) { %>
-								<% if (data[i].positionData.value === 'Customer') { %>
+						<div class="card-body">
+							<table class="table table-sm table-hover">
 								<tr>
-									
-									<td>
-										<%= data[i].fullname %>
-									</td>
-									<td>
-										<%= data[i].phonenumber %>
-									</td>
-									<td><a class="btn btn-sm btn-info"
-											href="/customer-detail?id=<%= data[i].id %>">View</a></td>
+									<th>Customer</th>
+									<th>Phone</th>
+									<th></th>
 								</tr>
+
+								<% for (let i=0; i < data.length; i++) { %>
+									<% if (data[i].positionData.value === 'Customer') { %>
+									<tr>
+										
+										<td>
+											<%= data[i].fullname %>
+										</td>
+										<td>
+											<%= data[i].phonenumber %>
+										</td>
+										<td><a class="btn btn-sm btn-info text-white"
+												href="/customer-detail?id=<%= data[i].id %>">More info</a></td>
+									</tr>
+									<% } %>
 								<% } %>
-							<% } %>
-						</table>
+							</table>
+						</div>
+
+						<div class="card-body pt-0">
+							<a class="btn btn-primary btn-sm " href="/admin-create-user">New Customer</a>
+						</div>
 					</div>
+
 				</div>
 
-				<div class="col-md-7">
-					<h5 class="text-center">LAST 5 ORDERS</h5>
-					<hr>
-					<div class="card card-body">
+				<div class="col-lg-7">
+					
+					<div class="card">
 
-						<table class="table table-sm">
-							<tr>
-								<th>Customer</th>
-								<th>Product</th>
-								<th>Date Orderd</th>
-								<th>Status</th>
-								<th>Update</th>
-								<th> Delete </th>
+						<div class="card-header pb-0">
+							<h4 class="float-start">Lasted Orders</h4>
+<!-- 							<ul class="pagination float-end">
+						    <li class="page-item">
+						      <a class="page-link" href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <li class="page-item"><a class="page-link" href="#">1</a></li>
+						    <li class="page-item"><a class="page-link" href="#">2</a></li>
+						    <li class="page-item"><a class="page-link" href="#">3</a></li>
+						    <li class="page-item">
+						      <a class="page-link" href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul> -->
+						</div>
+
+						<div class="card-body">
+							<table class="table table-sm">
+								<tr>
+									<th>Customer</th>
+									<th>Product</th>
+									<th>Date Orderd</th>
+									<th>Status</th>
+									<th>Update</th>
+									<th> Delete </th>
+								</tr>
+
+								<% for (let i=0; i < allorder.length; i++) { %>
+								<tr>
+									<td><%= allorder[i].customerData.fullname %></td>
+									<td><%= allorder[i].productData.name %></td>
+									<td><%= allorder[i].createdAt %></td>
+									<td><%= allorder[i].orderStatusData.value %></td>
+									<td><a class="btn btn-sm btn-info" href="/update-order?id=<%= allorder[i].id%>">Update</td>
+									<td><a class="btn btn-sm btn-danger" href="/delete-order?id=<%= allorder[i].id%>">Delete</td>
+								</tr>
+								<% } %>
+
+								<tr>
+									
+								</tr>		
+							</table>
+						</div> <!-- end card-body -->
+
 						
-							</tr>
-							<% for (let i=0; i < allorder.length; i++) { %>
-							<tr>
-							
-								<td><%= allorder[i].customerData.fullname %></td>
-								<td><%= allorder[i].productData.name %></td>
-								<td><%= allorder[i].createdAt %></td>
-								<td><%= allorder[i].orderStatusData.value %></td>
-								<td><a class="btn btn-sm btn-info" href="/update-order?id=<%= allorder[i].id%>">Update</td>
-								<td><a class="btn btn-sm btn-danger" href="/delete-order?id=<%= allorder[i].id%>">Delete</td>
-								
-							
-							
-							</tr>
-							<% } %>		
-
-
-
-						</table>
 					</div>
+
 
 				</div>
 				<footer class="col">
