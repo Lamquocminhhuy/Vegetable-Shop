@@ -1,12 +1,12 @@
 import db from '../models/index';
 import adminServices from '../services/adminServices'
 
-// Controller nhận dữ liệu từ View xong xử lí rồi trả về cho View (khúc xử lí viết bên services vì viết ở đây thì rườm ra lắm)
+
 
 let getAdminPage = async (req, res) => {
     try {
 
-        let data = await db.User.findAll(
+        let customer = await db.User.findAll(
             { 
                 include: [
                     { model: db.Allcode, as: 'positionData', attributes: ['value'] },
@@ -21,7 +21,7 @@ let getAdminPage = async (req, res) => {
 
         // console.log(allorder)
         return res.render('admin/admin.ejs', {
-            data : data ,
+            customer : customer ,
             allorder : allorder
         
         })
@@ -118,7 +118,6 @@ let getProduct = async (req,res) =>{
    
     return res.render('admin/product.ejs', {
         price: price,
-      
         product:product,
         size:size,
     });
@@ -142,9 +141,7 @@ let getProductDetail = async (req,res) =>{
     return res.render('admin/productDetail', {
         product:product,
         price: price,
-       
         size:size,
-
     });
 
 }
@@ -165,8 +162,8 @@ let updateProduct = async (req,res) =>{
 
 let deleteProduct = async (req,res) =>{
     let message = await adminServices.deleteProduct(req.body.id)
-    if (message === 'Ok'){
-        return res.redirect('/product')
+    if(message === 'Ok'){
+        return res.redirect('/product');  
     }
 }
 
@@ -246,8 +243,4 @@ module.exports = {
     updateOrderStatus:updateOrderStatus,
     deleteOrderInCustomer:deleteOrderInCustomer,
     getLogOut:getLogOut
-    
-   
-    
-
 }
