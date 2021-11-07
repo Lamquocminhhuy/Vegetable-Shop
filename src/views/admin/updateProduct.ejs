@@ -16,13 +16,7 @@
             </div>
             <div class="col-md-3">
               <label for="inputPassword4" class="form-label">Price</label>
-              <select id="inputState" class="form-control" name="priceId">
-                <% for (let i=0; i < price.length; i++) { %>
-                  <option value="<%= price[i].keyMap %>">
-                    <%= price[i].value %>$
-                  </option>
-                  <% } %>
-              </select>
+              <input  type="text" class="form-control"   name="priceId" required value="<%= product.priceId %>">
             </div>
             <div class="col-3">
               <label for="inputAddress2" class="form-label">Amount</label>
