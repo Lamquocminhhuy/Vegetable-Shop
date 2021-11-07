@@ -145,7 +145,7 @@
     object-fit: cover;
 }
 
-.pickbox button {
+.pickbox .btn {
 	background: var(--clr-brown);
 	color: white;
 	text-transform: capitalize;
@@ -200,3 +200,19 @@ footer .links ul li a:hover {
 	border-bottom: white 1px solid;
 }
 
+/* ================ */
+/*  PRODUCT DETAIL  */
+/* ================ */
+
+.product-detail {
+	background: var(--clr-dark);
+}
+
+.product-detail .col {
+	margin-top: 10rem;
+	padding-bottom: 10rem;
+}
+
+.product-detail .product-img img {
+	width: 600px;
+}

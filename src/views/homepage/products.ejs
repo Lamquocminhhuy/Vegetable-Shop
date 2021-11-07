@@ -17,44 +17,55 @@
 
   <%- include('../homepage/navbar.ejs'); %>
   
-
-    <!-- JUMBOTRON -->
-  <section class="main">
+  <!-- Product Detail -->
+  <section class="product-detail">
     <div class="container">
-      <h1 class="text-center">Best Seller</h1>
-      <div class="row">
-        <div class="col">
-       
-          <div class="col-md-3 mx-3 my-3 col-sm-6 px-2 py-2">
-            <img src="data:image/png;base64,<%= product.image %>" style="height: 250px; width: 250px; border-radius: 25px;">
-          </div>
+      <div class="row px-5">
+        <div class="col product-img mx-2">
+            <img src="data:image/png;base64,<%= product.image %>">
         </div>
-        <div class="col">
-          <p><%= product.name %></p>
-          <p class="card-text"><%= product.description %></p>
-          <p class="card-text">Avaible: <%= product.amount %></p>
-          <p class="card-text">Price: <%= product.priceData.value %>$</p>
-          <% if (product.amount > 0) { %>
-            <button class="btn btn-info " data-bs-toggle="modal"
-            data-bs-target="#buyModal"> Buy Me</button>
+        <div class="col mx-4">
+          <div class="product-content bg-light p-4">
+            <p class="text-center">ORGANIC PRODUCE FARM BOXES</p>
+            <h5 class="text-center mb-4"><%= product.name %></h5>
+            <p class="card-text ps-2 pe-5"><%= product.description %></p>
+            <p class="card-text ps-2 fw-bold">Available: <%= product.amount %></p>
+            <p class="card-text ps-2 fw-bold">Price: <%= product.priceData.value %>$</p>
+            <% if (product.amount > 0) { %>
+              <!--  -->
+              <form class="row g-3" method="POST" action="/buy-product">
+                <% if (user) { %>
+                  <input type="hidden" name="id" value="<%= user.id %>">
+                  <% } %>
+                    <% if(product) { %>
+
+                      <input type="hidden" name="productId" value="<%= product.id %>">
+                      <div class="col-3 ps-3">
+                        <label for="inputState" class="form-label">Quantity</label>
+
+                        <!-- Co chinh sua: nhap vao nho nhat 1, lon nhat la so luong san pham -->
+                        <input type="number" class="form-control mb-4" id="inputState" value="1" name="quantity" min="1" max="<%= product.amount %>">
+
+                        <button type="submit" class="btn btn-success ps-2">Buy Me</button>
+                      </div>
+                      
+
+                   
+                    <% } %>
+              </form>
             <% } else {%>
               <div class="col-12 ">
-                <button type="submit" class="btn btn-warning disabled">Sold out ! Come back later </button>
+                <button type="submit" class="btn btn-warning disabled ps-2">Sold out ! Please come back later </button>
               </div>
-              <% } %>
-            
+            <% } %>
+          </div>                    
         </div>
-      </div>
-     
+      </div>    
     </div>
-    
-     
-      
-    
+
   </section>
 
   <%- include('buyProduct'); %>
-
 
   <%- include('../partials/footer.ejs'); %>
   
