@@ -13,12 +13,9 @@
     <div class="container">
 
             <div class="product-header">
-                <h2 class="mb-3 mt-5 text-center">Manage Customers</h2>
+                <h2 class="mb-3 mt-5 text-center">Manage Orders</h2>
                 <div class="card-body pt-0 mb-5">
                     <ul class="ps-0">
-                        <li class="float-start">
-                            <a class="btn btn-primary btn-sm " href="/admin-create-user">New Customer</a>
-                        </li>
                         <li class="float-end">
                             <form action="/order" class="d-flex"  method="GET">
                                 <input class="form-control me-2 py-1" type="text" id="search" name="search" placeholder="Search orders" aria-label="Search" value="<%= %>" />
@@ -31,7 +28,8 @@
             </div>
             <div class="row mt-3">
                 <table class="table table-striped">
-                    <tr>
+                    <tr> 
+                        <th>#</th>
                         <th>Customer</th>
                         <th>Product</th>
                         <th>Date Orderd</th>
@@ -42,6 +40,7 @@
                     
                     <% for (let i=0; i < order.length; i++) { %>
                     <tr>
+                        <td><%= order[i].id %></td>
                         <td><%= order[i].customerData.fullname %></td>
                         <td><%= order[i].productData.name %></td>
                         <td><%= order[i].createdAt %></td>

@@ -438,7 +438,7 @@ let getAllOrder = () => {
         raw: true,
         nest: true,
       });
-      // console.log(data);
+
       resolve(data);
     } catch (e) {
       reject(e);
@@ -455,8 +455,15 @@ let searchOrders = (searchkey) => {
 
         let order = await db.Order.findAll({
           where:{
-            [Op.like]:`%${searchkey}%`
-          }
+            id: {[Op.like]:`%${searchkey}%`}
+          },
+          include: [
+            { model: db.Allcode, as: "orderStatusData", attributes: ["value"] },
+            { model: db.Product, as: "productData", attributes: ["name"] },
+            { model: db.User, as: "customerData", attributes: ["fullname"] },
+          ],
+          raw: true,
+          nest: true,
         });
   
         if (order) { resolve(order); } 
