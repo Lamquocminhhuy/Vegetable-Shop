@@ -28,6 +28,8 @@ let initWebRoutes = (app) => {
 
     router.post('/admin-post-user', adminController.postAdminCreateUser);
 
+    router.get('/customer',authentication.handleAuthentication, authadmin.authAdmin,adminController.getCustomers);
+
     router.get('/customer-detail',authentication.handleAuthentication, authadmin.authAdmin,adminController.getCustomerDetail);
 
     router.post('/update-customer-infor', authentication.handleAuthentication,adminController.updateCustomerInfor);
@@ -43,6 +45,8 @@ let initWebRoutes = (app) => {
     router.post('/update-product', authentication.handleAuthentication,adminController.updateProduct);
 
     router.post('/delete-product', authentication.handleAuthentication,adminController.deleteProduct);
+
+    router.get('/order',authentication.handleAuthentication, authadmin.authAdmin,adminController.getOrders);
 
     router.post('/create-order-admin', authentication.handleAuthentication,adminController.createOrder);
 

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%- include('../partials/head.ejs'); %>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <title>Register</title>
 
@@ -43,27 +41,27 @@
             </div>
 
             <div class="row mb-2 align-items-center">
-              <label for="inputAddress" class="col-form-label col-sm-2">Full Name:</label>
+              <label for="inputFullname" class="col-form-label col-sm-2">Full Name:</label>
               <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputName" name="fullname" >
               </div>
             <!-- </div>
 
             <div class="row mb-2 align-items-center"> -->
-              <label for="inputAddress2" class="col-form-label col-sm-2">Address:</label>
+              <label for="inputAddress" class="col-form-label col-sm-2">Address:</label>
               <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputAddress" name="address" > 
               </div>
             </div>
 
             <div class="row mb-2 align-items-center">
-              <label for="inputCity" class="col-form-label col-sm-2">Phone Number:</label>
+              <label for="inputPhone" class="col-form-label col-sm-2">Phone Number:</label>
               <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputPhone" name="phonenumber" >
               </div>
             <!-- </div>
             <div class="row mb-2 align-items-center"> -->
-              <label for="inputCity" class="col-form-label col-sm-2">Gender:</label>
+              <label for="inputGender" class="col-form-label col-sm-2">Gender:</label>
               <div class="col-sm-4">
                 <select id="inputState" class="form-control" name="gender" required>
                   <option value="">--Choose--</option>
@@ -88,12 +86,6 @@
   <script type="text/javascript" src="jquery.validate.js"></script>
 
   <script type="text/javascript">
-    // $.validator.setDefaults( {
-    //   submitHandler: function () {
-    //     alert( "submitted!" );
-    //   }
-    // });
-
     $( document ).ready( function() {
       $("#register-form").validate({
         

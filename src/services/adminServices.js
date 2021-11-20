@@ -16,6 +16,46 @@ let hashUserPassword = (password) => {
   });
 };
 
+let getAllCustomers = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.User.findAll({
+        raw: true,
+        nest: true,
+      });
+
+      resolve(data);
+      console.log(data);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let searchCustomers = (searchkey) => {
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        const Sequelize = require('sequelize');
+        const Op = Sequelize.Op;
+
+        let user = await db.User.findAll({
+          where:{
+            [Op.or]: [
+              {fullname:{[Op.like]:`%${searchkey}%`}}, 
+              {phonenumber:{[Op.like]:`%${searchkey}%`}},
+              {email: {[Op.like]:`%${searchkey}%`}}
+            ]
+          }
+        });
+  
+        if (user) { resolve(user); } 
+        else { resolve(user); }
+      } 
+      catch (e) { reject(e); }
+    });
+  };
+
 let createNewCustomer = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -41,7 +81,6 @@ let getCustomerDetail = (customerId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let user = await db.User.findOne({
-        // Chờ t lấy thông tin hả chạy tiếp dòng khác :v
         where: { id: customerId },
         raw: true,
       });
@@ -407,6 +446,26 @@ let getAllOrder = () => {
   });
 };
 
+let searchOrders = (searchkey) => {
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        const Sequelize = require('sequelize');
+        const Op = Sequelize.Op;
+
+        let order = await db.Order.findAll({
+          where:{
+            [Op.like]:`%${searchkey}%`
+          }
+        });
+  
+        if (order) { resolve(order); } 
+        else { resolve(order); }
+      } 
+      catch (e) { reject(e); }
+    });
+  };
+
 let deleteOrder = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -477,6 +536,8 @@ let updateOrderStatus = (data) => {
 
 module.exports = {
   createNewCustomer: createNewCustomer,
+  getAllCustomers: getAllCustomers,
+  searchCustomers:searchCustomers,
   getCustomerDetail: getCustomerDetail,
   updateCustomerInfor: updateCustomerInfor,
   deleteCustomer: deleteCustomer,
@@ -490,6 +551,7 @@ module.exports = {
   createOrder:createOrder,
   getOrderByCustomerId:getOrderByCustomerId,
   getAllOrder:getAllOrder,
+  searchOrders:searchOrders,
   deleteOrder:deleteOrder,
   getOrderById:getOrderById,
   updateOrderStatus:updateOrderStatus

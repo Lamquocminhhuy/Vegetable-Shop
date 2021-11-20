@@ -5,7 +5,6 @@ import adminServices from '../services/adminServices'
 
 let getAdminPage = async (req, res) => {
     try {
-
         let customer = await db.User.findAll(
             { 
                 include: [
@@ -15,22 +14,17 @@ let getAdminPage = async (req, res) => {
                 nest: true
             }
         )
-        
-
         let allorder = await adminServices.getAllOrder()
 
         // console.log(allorder)
         return res.render('admin/admin.ejs', {
             customer : customer ,
-            allorder : allorder
-        
-        })
-
-            
+            allorder : allorder      
+        });
+     
     }catch(e){
         console.log(e)
-    }
-  
+    } 
 }
 
 
@@ -39,7 +33,7 @@ let getAdminCreateUser = (req, res) => {
 }
 
 
-// View --> gui request Controller -- > SERVICE  --- > cONTROLLER -- > VIEW
+// View --> gui request Controller -- > SERVICE  --- > CONTROLLER -- > VIEW
 
 let postAdminCreateUser = async (req, res) => {
     let message =  await adminServices.createNewCustomer(req.body);
@@ -47,15 +41,33 @@ let postAdminCreateUser = async (req, res) => {
 
     return res.redirect('/admin');
 }
+
+let getCustomers = async (req,res,next) =>{
+    if(!req.query.search) {
+        let customer = await adminServices.getAllCustomers();
+        return res.render('admin/customer.ejs', {
+            customer: customer,
+        });
+    }
+    else {
+        let searchkey = req.query.search;
+        let customer = await adminServices.searchCustomers(searchkey);
+
+        return res.render('admin/customer.ejs', {
+            customer: customer,
+        });
+    } 
+}
+
  
 let getCustomerDetail = async(req, res) => {
     let customerId  = req.query.id;
-    let customer =  await adminServices.getCustomerDetail(customerId );
+    let customer =  await adminServices.getCustomerDetail(customerId);
     let product = await adminServices.getAllProduct();
     let order = await adminServices.getOrderByCustomerId(customerId);
     // console.log(order)
     return res.render('admin/customerDetail.ejs', {
-        customer : customer,
+        customer:customer,
         product:product,
         order:order
     
@@ -81,15 +93,12 @@ let handleLogin = async (req,res) =>{
     let email = req.body.email;
     let password = req.body.password;
 
-
-
     let message = await adminServices.handleUserLogin(email, password);
     console.log(message);   
     if(message.user){
         res.cookie('userId', message.user.id,{
             signed: true,
-            expires: new Date(Date.now() + 900000)
-            
+            expires: new Date(Date.now() + 900000 * 2)            
         })
     }
 
@@ -102,12 +111,8 @@ let handleLogin = async (req,res) =>{
             error : message.check,
             user : message.user,
         });
-    }
- 
-   
-    
+    } 
 }
-
 
 let getProduct = async (req,res) =>{
   
@@ -167,6 +172,23 @@ let deleteProduct = async (req,res) =>{
     }
 }
 
+let getOrders = async (req,res,next) =>{
+    if(!req.query.search) {
+        let order = await adminServices.getAllOrder();
+        return res.render('admin/order.ejs', {
+            order: order,
+        });
+    }
+    else {
+        let searchkey = req.query.search;
+        let order = await adminServices.searchOrders(searchkey);
+
+        return res.render('admin/order.ejs', {
+            order: order,
+        });
+    } 
+}
+
 let createOrder = async (req,res) =>{
     let userid = req.body.id;
     let message = await adminServices.createOrder(req.body)
@@ -190,8 +212,6 @@ let updateOrder = async (req,res) =>{
     return res.render('admin/updateOrder' , {
         order : order,
         status:status
-
-    
     });
 }
 
@@ -201,10 +221,6 @@ let updateOrderStatus = async (req,res) =>{
     let id = req.body.customerId;
    
     return res.redirect('/customer-detail?id='+id )
-    
-  
-
-    
   }
   
   let deleteOrderInCustomer = async (req,res) =>{
@@ -228,6 +244,7 @@ module.exports = {
     getAdminPage:getAdminPage,
     getAdminCreateUser:getAdminCreateUser,
     postAdminCreateUser:postAdminCreateUser,
+    getCustomers:getCustomers,
     getCustomerDetail:getCustomerDetail,
     updateCustomerInfor:updateCustomerInfor,
     deleteCustomer:deleteCustomer,  
@@ -238,6 +255,7 @@ module.exports = {
     updateProduct:updateProduct,
     deleteProduct:deleteProduct,
     createOrder:createOrder,
+    getOrders: getOrders,
     deleteOrder:deleteOrder,
     updateOrder:updateOrder,
     updateOrderStatus:updateOrderStatus,

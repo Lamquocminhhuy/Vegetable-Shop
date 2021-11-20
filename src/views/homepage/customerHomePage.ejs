@@ -31,7 +31,7 @@
         </div>
       </header>
     
-        <div class="container-fluid">
+        <div class="container">
             <br>
 
             <div class="row">
@@ -59,22 +59,18 @@
                 </div>
                 <%- include('updateCustomer.ejs'); %>
 
+                <div class="col-md" >
+                    <div class="card card-body bg-light" style="padding-bottom: 30px !important;">
+                        <h5 class="text-center">Total Orders</h5>
+                        <hr>
+                        <% if(order) { %>
+                            <h1 class="text-center p-3" style="font-size: 5.5rem;">
+                                <%= order.length %>
+                            </h1>
 
-                  
-
-
-                            <div class="col-md" >
-                                <div class="card card-body" style="padding-bottom: 30px !important;">
-                                    <h5 class="text-center">Total Orders</h5>
-                                    <hr>
-                                    <% if(order) { %>
-                                        <h1 style="text-align: center;padding: 10px; font-size: 100px;">
-                                            <%= order.length %>
-                                        </h1>
-
-                                    <% } %>
-                                </div>
-                            </div>
+                        <% } %>
+                    </div>
+                </div>
             </div>
             <br>
             <br>

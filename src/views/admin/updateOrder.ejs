@@ -9,7 +9,7 @@
 </head>
 <body>
     <%- include('../partials/navbar.ejs'); %>
-    <div class="container-fluid">	
+    <div class="container">	
         <br>
         <br>
         <h3 class="card-title text-center">Update Order Status</h3>
@@ -19,20 +19,16 @@
             
            
             <div class="col-6">
-                <div class="card card-body">
+                <div class="card card-body fs-6 p-5">
+                    <h3>Order Detail</h3> <hr>
                   <% if (order) { %>
-                    <p>Product:    <%= order.productData.name %></p>
-                    <p>Quantity:    <%= order.quantity %></p>
-                    <p>Customer Name: 	<%= order.customerData.fullname %></p>
-                    <p>Phone Number: 	<%= order.customerData.phonenumber %></p>
-                    <p>Customer Adress: <%= order.customerData.address %></p>
-                    <p>Product Ordered: <%= order.createdAt %></p>
+                    <p><b>Product:</b>    <%= order.productData.name %></p>
+                    <p><b>Quantity:</b>   <%= order.quantity %></p>
+                    <p><b>Customer Name:</b> 	<%= order.customerData.fullname %></p>
+                    <p><b>Phone Number:</b> 	<%= order.customerData.phonenumber %></p>
+                    <p><b>Customer Adress:</b> <%= order.customerData.address %></p>
+                    <p><b>Product Ordered:</b> <%= order.createdAt %></p>
                    
-                
-                  
-              
-              
-               
                 <% } %>
                    
                 </div>
@@ -40,7 +36,8 @@
           
            
             <div class="col-6">             
-                <div class="card card-body">
+                <div class="card card-body p-5">
+                    <h3><b>Order Status</b></h3>
                     <% if (order) { %>
                     <p style="color: blue;">Status:    <%= order.orderStatusData.value %></p>
                     <% } %>
@@ -50,7 +47,6 @@
                         
 
                         <div class="col-md-12">
-                          <label for="inputState" class="form-label">Order Status</label>
                           <select id="inputState" class="form-control" name="status" >
                             <% for (let i=0; i < status.length; i++) { %>
                                 <option value="<%= status[i].keyMap %>" > <%= status[i].value %></option>              
