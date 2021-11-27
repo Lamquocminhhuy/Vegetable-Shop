@@ -6,7 +6,6 @@ import bcrypt from 'bcryptjs';
 const salt = bcrypt.genSaltSync(10);
 
 let hashUserPassword = (password) => {
-
     return new Promise(async(resolve, reject) => {
         try {
             let hashPassword = await bcrypt.hashSync(password, salt);
@@ -16,7 +15,7 @@ let hashUserPassword = (password) => {
             reject(e);
         }
     })
-}
+};
 let checkUserEmail = (userEmail) => {
     return new Promise(async (resolve, reject) => {
       try {
