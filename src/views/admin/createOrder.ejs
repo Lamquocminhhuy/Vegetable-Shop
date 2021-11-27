@@ -12,26 +12,26 @@
    
           <form class="row g-3" action="/create-order-admin" method="POST">
             <% if (customer) { %>
-            <input type="hidden" id="custId" name="id" value="<%= customer.id %>">
+            <input type="hidden" id="customerId" name="id" value="<%= customer.id %>">
             <% } %>
             <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Product</label>
+              <label for="inputProduct" class="form-label">Product</label>
          
-              <select id="inputState" class="form-control" name="productId" >
+              <select id="inputProduct" class="form-control" name="productId" >
                 <option selected>---Choose product----</option>
                 <% for (let i=0; i < product.length; i++) { %>
-                    <% if (product[i].amount > 0) { %>
-                <option value="<%= product[i].id %>"><%= product[i].name %></option>
-                    <% } %>
+                  <% if (product[i].amount > 0) { %>
+                <option value="<%= product[i].id %> | <%= product[i].priceId %>"><%= product[i].name %></option>
                   <% } %>
+                <% } %>
               </select>
             </div>
           
    
        
             <div class="col-md-6">
-              <label for="inputState" class="form-label">Quantity</label>
-              <select id="inputState" class="form-control" name="quantity" >
+              <label for="inputQuantity" class="form-label">Quantity</label>
+              <select id="inputQuantity" class="form-control" name="quantity" >
              
                         <% for (let i=0; i < 5; i++) { %>
 

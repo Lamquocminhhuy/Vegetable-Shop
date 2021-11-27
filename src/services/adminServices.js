@@ -365,35 +365,48 @@ let deleteProduct = (id) => {
   });
 };
 
-let createOrder = (data) => {
-  return new Promise(async (resolve, reject) => {
+let calTotal = (id,qty) => {
+  return new Promise (async (resolve, reject) => { 
       try{
-         
-  
+          let product = await db.Product.findOne({
+            where: { id: id },
+            attributes : ['priceId'],
+            raw: true,
+          });
+
+          let total = qty * product.priceId;
+          resolve(total);
+      }
+      catch(e){
+          console.log(e)
+          reject(e);
+      }
+  });
+}
+
+let createOrder = (data) => {
+  return new Promise(async (resolve, reject) => { 
+      try{
+          let total = await calTotal(data.productId,data.quantity);
+          // console.log(total);
           await db.Order.create({ 
             customerId: data.id,
             productId: data.productId,
             quantity: data.quantity,
+            total: total,
             status: 'S1',
-          
-             
           })
+
           let product = await db.Product.findOne({
             where: { id: data.productId },
             raw: false,
           });
     
-          if (product) {
-         
-              product.amount = product.amount - data.quantity,
-       
+          if (product) {        
+              product.amount = product.amount - data.quantity,       
               await product.save();
-    
-  
           }
           resolve('Ok')
-          
-
 
       }catch(e){
           console.log(e)
@@ -428,7 +441,6 @@ let getAllOrder = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = await db.Order.findAll({
-
         include: [
         
           { model: db.Allcode, as: "orderStatusData", attributes: ["value"] },

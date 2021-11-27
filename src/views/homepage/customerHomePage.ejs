@@ -82,6 +82,7 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
+                                <th>Total</th>
                                 <th>Date Ordered</th>
                                 <th>Status</th>
                                 <th>Cancel Order</th>
@@ -95,7 +96,9 @@
                                     <td>
                                         <%= order[i].quantity%>
                                     </td>
-
+                                    <td>
+                                        <%= order[i].total%>
+                                    </td>
                                     <td>
                                         <%= order[i].createdAt %>
                                     </td>
