@@ -1,10 +1,13 @@
 # Vegetable Shop
 
-This project using ExpressJs, Sequelize ORM, EJS.
+Vegetable Shop with nicely design.
 Try me: https://farmvn.herokuapp.com/
 
-## Installation
+## Installation & Set up database
 
+```bash
+docker compose up
+```
 
 
 ```bash
