@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "vegetable-shop",
-    "host": "localhost",
-    "dialect": "mysql",
+    "username": "postgres",
+    "password": "Lamquocminhhuy123",
+    "database": "postgres",
+    "host": "db.jezplnfcoamzlxqzimek.supabase.co",
+    "dialect": "postgres",
     "logging": false
   },
   "test": {
